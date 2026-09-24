@@ -3,7 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <base href="/YEAR%204/COMPANY%20WEBSITE/">
+  <script>
+    const p = window.location.pathname;
+    const isLocalSubdir = p.includes('/YEAR%204/COMPANY%20WEBSITE') || p.includes('/YEAR 4/COMPANY WEBSITE');
+    document.write('<base href="' + (isLocalSubdir ? '/YEAR%204/COMPANY%20WEBSITE/' : '/') + '">');
+  </script>
+  <noscript><base href="/"></noscript>
   <link rel="icon" type="image/x-icon" href="assets/icons/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Our Projects &amp; Case Studies | PlaceHOLDER</title>
