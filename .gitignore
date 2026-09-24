@@ -1,0 +1,126 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+ehthumbs_vista.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*.p12
+credentials.json
+token.json
+tokens.json
+secrets.json
+
+# IDEs and Code Editors
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+*~
+
+# Logs and Diagnostics
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Node / JavaScript Dependencies & Cache
+node_modules/
+.npm/
+.pnpm-store/
+.eslintcache
+
+# Python Compilation & Package Artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Testing & Browser Automation (Playwright / Puppeteer / Cypress)
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+.playwright/
+cypress/videos/
+cypress/screenshots/
+
+# Temporary, Cache & Scratch Directories
+.cache/
+tmp/
+temp/
+.temp/
+scratch/
+
+# Agent / Antigravity Local Runtime Data
+.gemini/
+.antigravity/
+.system_generated/
+
+# Agent Client Auto-Generated Symlink Directories (e.g. from skills CLI)
+.claude/
+.cursor/
+.cline/
+
+# Ephemeral Skill Runtime & Review Artifacts
+.impeccable/
+
+# Security Scans, Pentest Targets & Audit Artifacts
+targets/
+strix_runs/
+*.sql
+*.sqlite
+*.db
+sec_test_cookies*.txt
+verify_cookie*.txt
