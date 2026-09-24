@@ -104,6 +104,7 @@ temp/
 scratch/
 
 # Agent / Antigravity Local Runtime Data
+.agents/
 .gemini/
 .antigravity/
 .system_generated/

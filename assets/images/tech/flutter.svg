@@ -1,0 +1,7 @@
+<svg width="215" height="40" viewBox="0 0 215 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(2, 2) scale(1.28)">
+    <path d="M17 2L5 14l3.8 3.8L24.6 2H17z" fill="#000000"/>
+    <path d="M8.8 17.8L5 21.6 11.4 28h7.6l-6.4-6.4 6.4-6.4-3.8-3.8-6.4 6.4z" fill="#000000" opacity="0.8"/>
+  </g>
+  <text x="52" y="28" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.02em" fill="#000000">Flutter</text>
+</svg>

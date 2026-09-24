@@ -1,0 +1,49 @@
+# Apache Server Configuration for Company Website
+
+# 1. Clean URLs (Extensionless Routing)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /YEAR%204/COMPANY%20WEBSITE/
+
+    # If requested URI exists as file or directory, serve directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Map /about to /about.html, /services to /services.html, etc.
+    RewriteCond %{DOCUMENT_ROOT}/YEAR\ 4/COMPANY\ WEBSITE/$1.html -f
+    RewriteRule ^([^/]+)/?$ $1.html [L]
+
+    # Map nested SPA routes to their parent page
+    RewriteRule ^portfolio/.*$ portfolio.html [L]
+
+    # Root redirect
+    RewriteRule ^$ index.html [L]
+</IfModule>
+
+# 2. Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# 3. Proper MIME Types
+<IfModule mod_mime.c>
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType image/svg+xml .svg
+    AddType image/webp .webp
+    AddType image/png .png
+    AddType image/jpeg .jpg .jpeg
+</IfModule>
+
+# 4. Performance Caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+</IfModule>

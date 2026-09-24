@@ -1,0 +1,6 @@
+<svg width="270" height="40" viewBox="0 0 270 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(2, 2) scale(1.28)">
+    <path d="M14 3C8.5 3 4 7.2 4 12.5c0 4.2 2.8 7.8 6.8 8.9v4.6l3.2-2.5h1.5l3.2 2.5v-4.6c4-1.1 6.8-4.7 6.8-8.9C25.5 7.2 20.3 3 14 3zm-3 8c-.8 0-1.5-.7-1.5-1.5S10.2 8 11 8s1.5.7 1.5 1.5S11.8 11 11 11zm6 0c-.8 0-1.5-.7-1.5-1.5S16.2 8 17 8s1.5.7 1.5 1.5S17.8 11 17 11z" fill="#000000"/>
+  </g>
+  <text x="52" y="28" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.02em" fill="#000000">PostgreSQL</text>
+</svg>
