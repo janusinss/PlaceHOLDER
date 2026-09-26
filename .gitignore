@@ -102,6 +102,7 @@ tmp/
 temp/
 .temp/
 scratch/
+brag-output/
 
 # Agent / Antigravity Local Runtime Data
 .agents/

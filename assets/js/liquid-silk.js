@@ -175,6 +175,7 @@
       } catch (err) {
         console.warn('LiquidSilk texture upload warning:', err);
       }
+      resize();
     }
 
     image.onload = uploadTexture;
@@ -233,16 +234,20 @@
     container.addEventListener('touchstart', touchStartHandler, { passive: true });
     container.addEventListener('touchend', touchEndHandler, { passive: true });
 
-    const scrollHandler = function() {
-      targetScrollY = window.scrollY || window.pageYOffset || 0;
+    const scrollHandler = function(e) {
+      targetScrollY = (e && typeof e.scroll === 'number') ? e.scroll : (window.scrollY || window.pageYOffset || 0);
     };
     window.addEventListener('scroll', scrollHandler, { passive: true });
+    if (window.lenis && typeof window.lenis.on === 'function') {
+      window.lenis.on('scroll', scrollHandler);
+    }
 
     function resize() {
-      const width = container.clientWidth || canvas.clientWidth;
-      const height = container.clientHeight || canvas.clientHeight;
+      const width = container.clientWidth || canvas.clientWidth || (canvas.parentElement ? canvas.parentElement.clientWidth : 0);
+      const height = container.clientHeight || canvas.clientHeight || (canvas.parentElement ? canvas.parentElement.clientHeight : 0);
       if (!width || !height) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const isMobile = window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches;
+      const dpr = isMobile ? 1.0 : Math.min(window.devicePixelRatio || 1, 1.25);
       const renderW = Math.floor(width * dpr);
       const renderH = Math.floor(height * dpr);
       if (canvas.width !== renderW || canvas.height !== renderH) {
@@ -259,56 +264,72 @@
     }
     resize();
 
+    const startTime = performance.now();
+
+    function render() {
+      if (!document.body.contains(canvas)) {
+        cleanup();
+        return;
+      }
+
+      if (!isVisible) {
+        rafId = null;
+        return;
+      }
+
+      const elapsed = (performance.now() - startTime) * 0.001;
+
+      mouseX += (targetMouseX - mouseX) * 0.08;
+      mouseY += (targetMouseY - mouseY) * 0.08;
+      hover += (targetHover - hover) * 0.06;
+      scrollY += (targetScrollY - scrollY) * 0.1;
+
+      gl.useProgram(program);
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, texture);
+      gl.uniform1i(uTexture, 0);
+
+      gl.uniform1f(uTime, elapsed);
+      gl.uniform2f(uMouse, mouseX, mouseY);
+      gl.uniform1f(uHover, hover);
+      gl.uniform2f(uResolution, canvas.width, canvas.height);
+      gl.uniform1f(uScroll, scrollY);
+
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      canvas.__liquidSilkFrames = (canvas.__liquidSilkFrames || 0) + 1;
+
+      rafId = requestAnimationFrame(render);
+    }
+
+    // Start animation loop immediately
+    rafId = requestAnimationFrame(render);
+
     // IntersectionObserver to pause rendering when offscreen
     let io = null;
     if ('IntersectionObserver' in window) {
       io = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           isVisible = entry.isIntersecting;
+          if (isVisible) {
+            if (!rafId) {
+              rafId = requestAnimationFrame(render);
+            }
+          } else {
+            if (rafId) {
+              cancelAnimationFrame(rafId);
+              rafId = null;
+            }
+          }
         });
       }, { threshold: 0.01 });
       io.observe(container);
     }
 
-    const startTime = performance.now();
-
-    function render() {
-      // Self-cleanup if canvas was removed by React
-      if (!document.body.contains(canvas)) {
-        cleanup();
-        return;
-      }
-
-      if (isVisible) {
-        resize();
-        const elapsed = (performance.now() - startTime) * 0.001;
-
-        mouseX += (targetMouseX - mouseX) * 0.08;
-        mouseY += (targetMouseY - mouseY) * 0.08;
-        hover += (targetHover - hover) * 0.06;
-        scrollY += (targetScrollY - scrollY) * 0.1;
-
-        gl.useProgram(program);
-        gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.uniform1i(uTexture, 0);
-
-        gl.uniform1f(uTime, elapsed);
-        gl.uniform2f(uMouse, mouseX, mouseY);
-        gl.uniform1f(uHover, hover);
-        gl.uniform2f(uResolution, canvas.width, canvas.height);
-        gl.uniform1f(uScroll, scrollY);
-
-        gl.drawArrays(gl.TRIANGLES, 0, 6);
-      }
-
-      rafId = requestAnimationFrame(render);
-    }
-
-    rafId = requestAnimationFrame(render);
-
     function cleanup() {
-      if (rafId) cancelAnimationFrame(rafId);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
       container.removeEventListener('mousemove', mouseMoveHandler);
       container.removeEventListener('mouseenter', mouseEnterHandler);
       container.removeEventListener('mouseleave', mouseLeaveHandler);
@@ -327,6 +348,13 @@
   }
 
   function initAllLiquidSilk() {
+    // Prune unattached instances
+    for (const inst of activeInstances) {
+      if (!document.body.contains(inst)) {
+        if (inst.__liquidSilkCleanup) inst.__liquidSilkCleanup();
+      }
+    }
+
     const selector = '#liquid-silk-canvas, .liquid-silk-canvas, canvas[data-liquid-silk], [id*="liquid-silk-canvas"]';
     const canvases = document.querySelectorAll(selector);
     canvases.forEach(function(canvas) {
@@ -347,14 +375,23 @@
   }
   window.addEventListener('load', initAllLiquidSilk);
 
-  // Persistent MutationObserver to automatically bind canvases whenever React mounts or swaps routes
+  // Debounced MutationObserver to bind canvases on route transitions without thrashing
   let debounceTimer = null;
-  const observer = new MutationObserver(function() {
+  const observer = new MutationObserver(function(mutations) {
+    let hasAddedNodes = false;
+    for (let i = 0; i < mutations.length; i++) {
+      if (mutations[i].addedNodes && mutations[i].addedNodes.length > 0) {
+        hasAddedNodes = true;
+        break;
+      }
+    }
+    if (!hasAddedNodes) return;
+
     if (debounceTimer) return;
     debounceTimer = setTimeout(function() {
       debounceTimer = null;
       initAllLiquidSilk();
-    }, 40);
+    }, 150);
   });
 
   if (document.body) {

@@ -43,31 +43,77 @@
 }
 
 
-/* Morph-focused Top Navigation */
+/* Morph-focused Top Navigation (Landing Page Intro Morph) */
+header.header-morph-container,
+header {
+  border: none !important;
+  border-bottom: none !important;
+}
+
 @media (min-width: 768px) {
-  .header-morph-container {
+  header.header-morph-container {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
     z-index: 50 !important;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease !important;
+    will-change: transform, opacity;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: none !important;
+    border-bottom: none !important;
   }
-  .nav-morph-hidden {
-    transform: translateY(-100%) !important;
+  header.header-morph-container.nav-morph-hidden {
+    transform: translate3d(0, -100%, 0) !important;
     opacity: 0 !important;
     pointer-events: none !important;
+    border: none !important;
+    border-bottom: none !important;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease !important;
   }
-  .nav-morph-visible {
-    transform: translateY(0) !important;
+  header.header-morph-container.nav-morph-visible {
+    transform: translate3d(0, 0, 0) !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+    border: none !important;
+    border-bottom: none !important;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, box-shadow 0.3s ease !important;
   }
+}
+
+@media (max-width: 767px) {
+  header.header-morph-container {
+    position: sticky !important;
+    top: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    border: none !important;
+    border-bottom: none !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+  }
+}
+
+/* Global Scrollbar Elimination (Clean Window Canvas) */
+html,
+body,
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* Lenis Smooth Scroll Engine & Standards */
 html.lenis, html.lenis body {
   height: auto;
+  overscroll-behavior-y: none;
 }
 
 .lenis.lenis-smooth {
@@ -86,23 +132,12 @@ html.lenis, html.lenis body {
   pointer-events: auto;
 }
 
-/* Glowing Top Scroll Progress Indicator Bar */
+/* Top Scroll Progress Indicator Disabled */
 #scroll-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 3px;
-  background: linear-gradient(90deg, #111827 0%, #3b82f6 50%, #60a5fa 100%);
-  z-index: 99999;
-  pointer-events: none;
-  transition: width 0.08s ease-out;
-}
-
-@media (prefers-color-scheme: dark) {
-  #scroll-progress-bar {
-    background: linear-gradient(90deg, #ffffff 0%, #3b82f6 50%, #60a5fa 100%);
-  }
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
 }
 
 
@@ -603,7 +638,7 @@ section.pt-25 .grid img {
   }
 }
 .service-card:hover {
-  transform: translateY(-5px) scale(1.015) !important;
+  transform: translateY(-5px) scale(1.015) translateZ(0) !important;
 }
 
 /* Content Area */
@@ -773,6 +808,419 @@ section.pt-25 .grid img {
 .service-card--black:hover .service-chip {
   color: #E4E4E7 !important;
 }
+
+/* ==========================================================================
+   Mobile UI/UX Optimization
+   ========================================================================== */
+
+/* Why Partner With Us - Mobile Centered Scroll Track (strictly < 640px) */
+@media (max-width: 639px) {
+  .why-partner-header {
+    font-size: clamp(2rem, 6.5vw, 2.5rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -1.2px !important;
+    margin-bottom: 1.75rem !important;
+  }
+  .why-partner-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 1rem !important;
+    margin-left: -1.5rem !important;
+    margin-right: -1.5rem !important;
+    padding-left: calc((100vw - min(76vw, 290px)) / 2) !important;
+    padding-right: calc((100vw - min(76vw, 290px)) / 2) !important;
+    scroll-padding-inline: calc((100vw - min(76vw, 290px)) / 2) !important;
+    padding-bottom: 0.75rem !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  .why-partner-track::-webkit-scrollbar {
+    display: none !important;
+  }
+  .why-partner-card {
+    flex: 0 0 min(76vw, 290px) !important;
+    width: min(76vw, 290px) !important;
+    max-width: 290px !important;
+    flex-shrink: 0 !important;
+    scroll-snap-align: center !important;
+    scroll-snap-stop: normal !important;
+    padding: 1.85rem 1.6rem !important;
+    border-radius: 1.5rem !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    background: #ffffff !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    box-shadow: 0 2px 14px -2px rgba(0, 0, 0, 0.04) !important;
+  }
+  .why-partner-clone {
+    display: flex !important;
+  }
+  .why-partner-card svg {
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+  }
+  .why-partner-card h4 {
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.65rem !important;
+    font-size: 1.35rem !important;
+    line-height: 1.35 !important;
+    font-weight: 500 !important;
+  }
+  .why-partner-card p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    color: #4b5563 !important;
+  }
+}
+
+/* Hide Mobile Clones on screens >= 640px */
+@media (min-width: 640px) {
+  .why-partner-clone {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Portfolio Mobile Custom Dropdown Filter
+   ========================================================================== */
+.portfolio-filter-mobile {
+  display: block;
+  margin-bottom: 2rem;
+  width: 100%;
+  position: relative;
+}
+.portfolio-filter-dropdown-wrap {
+  position: relative;
+  width: 100%;
+}
+.portfolio-filter-trigger {
+  width: 100%;
+  height: 3.25rem;
+  padding: 0 1.25rem 0 1.5rem;
+  background-color: #ffffff;
+  color: #1D1F2C;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  border: 1px solid #E9E9EA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.15s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.portfolio-filter-trigger:active {
+  background-color: #f9fafb;
+}
+.portfolio-filter-trigger:focus-visible {
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+.portfolio-filter-chevron {
+  color: #1D1F2C;
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+.portfolio-filter-chevron.is-open {
+  transform: rotate(180deg);
+}
+.portfolio-filter-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1.25rem;
+  padding: 0.5rem;
+  box-shadow: 0 14px 34px -4px rgba(0, 0, 0, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+  animation: portfolioMenuFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes portfolioMenuFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.portfolio-filter-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #374151;
+  background: transparent;
+  border: none;
+  border-radius: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+  text-align: left;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.portfolio-filter-item:hover,
+.portfolio-filter-item:active {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+.portfolio-filter-item.is-active {
+  background-color: #f9fafb;
+  color: #000000;
+  font-weight: 600;
+}
+.portfolio-filter-item-check {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: #000000;
+  flex-shrink: 0;
+}
+@media (min-width: 640px) {
+  .portfolio-filter-mobile {
+    display: none !important;
+  }
+  .portfolio-filter-desktop {
+    display: flex !important;
+  }
+}
+@media (max-width: 639px) {
+  .portfolio-filter-desktop {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Services Capabilities Section Spacing
+   ========================================================================== */
+.services-capabilities-section {
+  padding-top: 3.5rem !important;
+  padding-bottom: 3.5rem !important;
+}
+@media (min-width: 640px) {
+  .services-capabilities-section {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+@media (min-width: 1024px) {
+  .services-capabilities-section {
+    padding-top: 6.25rem !important;
+    padding-bottom: 6.25rem !important;
+  }
+}
+
+/* ==========================================================================
+   Contact Page Mobile Optimizations
+   ========================================================================== */
+@media (max-width: 639px) {
+  .contact-form-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .contact-form-grid > * {
+    width: 100% !important;
+  }
+  .contact-services-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.65rem !important;
+  }
+  .contact-services-grid > li {
+    display: flex !important;
+    width: 100% !important;
+  }
+  .contact-service-pill {
+    width: 100% !important;
+    min-height: 3.25rem !important;
+    padding: 0.75rem 0.85rem !important;
+    font-size: 0.85rem !important;
+    font-family: inherit !important;
+    font-weight: 500 !important;
+    line-height: 1.25 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+  .contact-service-pill:active {
+    transform: scale(0.98);
+  }
+}
+@media (min-width: 640px) {
+  .contact-services-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* Compact Mobile Footer */
+@media (max-width: 639px) {
+  .site-footer {
+    padding-top: 2.75rem !important;
+  }
+  .site-footer-logo-wrap {
+    margin-bottom: 1.5rem !important;
+  }
+  .site-footer-logo-wrap img {
+    height: 1.75rem !important;
+    width: auto !important;
+  }
+  .site-footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 1.5rem 1rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .site-footer-col {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .site-footer-heading {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .site-footer-links {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.45rem !important;
+  }
+  .site-footer-links > li > a {
+    font-size: 0.8125rem !important;
+    line-height: 1.35 !important;
+  }
+  .site-footer-svg-wrap {
+    margin-bottom: 0.75rem !important;
+    overflow: hidden !important;
+  }
+  .site-footer-svg-wrap svg {
+    max-height: 3.25rem !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .site-footer-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    padding-bottom: 1.5rem !important;
+    font-size: 0.75rem !important;
+  }
+  .site-footer-bottom a,
+  .site-footer-bottom p {
+    font-size: 0.75rem !important;
+    line-height: 1.25 !important;
+  }
+}
+
+/* ==========================================================================
+   Hardware Acceleration & Performance Optimizations
+   ========================================================================== */
+body, h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: auto;
+}
+
+header.sticky:not(.header-morph-container) {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+/* Hardware-accelerated touch momentum for scroll tracks */
+.why-partner-track {
+  -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+  will-change: scroll-position;
+}
+
+/* ==========================================================================
+   Smooth Scrolling Stability & Anti-Flicker Guards
+   ========================================================================== */
+/* Permanent GPU Composite Layer Isolation for Cards, Pictures & Text */
+.service-card,
+.project-card,
+.case-study-card,
+.why-partner-card,
+.fc-card,
+.bundle-option-card,
+article {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  contain: paint;
+}
+
+.service-card-art {
+  pointer-events: none !important;
+  contain: paint;
+}
+
+img,
+picture,
+.fc-card-img {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Infinite Tech Stack Marquee (Moving Languages) - Guaranteed Smooth Continuous Motion */
+.animate-infinite-scroll {
+  display: flex !important;
+  flex-shrink: 0 !important;
+  animation: infinite-scroll 25s linear infinite !important;
+  will-change: transform;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-infinite-scroll img {
+  -webkit-transform: none !important;
+  transform: none !important;
+  will-change: auto !important;
+  pointer-events: none;
+}
+
+
+
 
 
 

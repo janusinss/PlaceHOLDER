@@ -63,18 +63,18 @@
     }
   }, { capture: true });
 
-  // Initialize Lenis Smooth Scroll Engine
+  // Initialize Lenis Ultra-Smooth Inertial Scroll Engine
   let lenis = null;
   if (typeof Lenis !== 'undefined') {
     lenis = new Lenis({
-      duration: 1.0,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1.5,
+      lerp: 0.1,             // Crisp, prompt settling that eliminates asymptotic subpixel text jitter
+      smoothWheel: true,     // Silky mouse wheel & trackpad momentum
+      wheelMultiplier: 0.9,  // Natural 1:1 wheel ratio
+      touchMultiplier: 1.0,  // Natural touch response
+      syncTouch: false,      // Preserves 120Hz native hardware compositor scroll on mobile
+      autoResize: true,
       infinite: false,
+      overscroll: false,     // Clean non-bouncing stop at boundaries
     });
     window.lenis = lenis;
 
@@ -82,48 +82,60 @@
       lenis.scrollTo(0, { immediate: true });
     }
 
-    // Connect Lenis with GSAP Ticker for smooth 60/120fps synchronization
-    if (typeof gsap !== 'undefined') {
-      if (typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-        lenis.on('scroll', ScrollTrigger.update);
-      }
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
-      gsap.ticker.lagSmoothing(0);
-    } else {
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
+    // Direct high-precision requestAnimationFrame loop for Lenis
+    function raf(time) {
+      lenis.raf(time);
       requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Keep GSAP ScrollTrigger synchronized with interpolated scroll position
+    if (typeof ScrollTrigger !== 'undefined') {
+      lenis.on('scroll', ScrollTrigger.update);
     }
   }
 
-  // Glowing Top Scroll Reading Progress Indicator
-  const progressBar = document.createElement('div');
-  progressBar.id = 'scroll-progress-bar';
-  document.body.appendChild(progressBar);
+  // Top progress bar disabled per user request
+  const existingBar = document.getElementById('scroll-progress-bar');
+  if (existingBar) existingBar.remove();
 
-  const updateProgress = (scroll, maxScroll) => {
-    if (maxScroll <= 0) {
-      progressBar.style.width = '0%';
-      return;
+  // Auto-center initial Rapid MVP Delivery card on mobile
+  function centerWhyPartnerInitial() {
+    if (window.innerWidth >= 640) return;
+    const track = document.querySelector('.why-partner-track');
+    if (!track || track.dataset.userScrolled === 'true') return;
+    const target = track.querySelector('[data-card="rapid-mvp"]');
+    if (target) {
+      const left = target.offsetLeft - ((window.innerWidth - target.offsetWidth) / 2);
+      track.scrollLeft = left;
     }
-    const percent = Math.min(Math.max((scroll / maxScroll) * 100, 0), 100);
-    progressBar.style.width = `${percent}%`;
-  };
+  }
 
-  if (lenis) {
-    lenis.on('scroll', (e) => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      updateProgress(e.scroll, maxScroll);
-    });
+  const track = document.querySelector('.why-partner-track');
+  if (track) {
+    const markInteracted = () => { track.dataset.userScrolled = 'true'; };
+    track.addEventListener('touchstart', markInteracted, { passive: true });
+    track.addEventListener('pointerdown', markInteracted, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', centerWhyPartnerInitial);
   } else {
-    window.addEventListener('scroll', () => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      updateProgress(window.scrollY, maxScroll);
-    }, { passive: true });
+    centerWhyPartnerInitial();
+  }
+  window.addEventListener('resize', centerWhyPartnerInitial);
+  setTimeout(centerWhyPartnerInitial, 100);
+  setTimeout(centerWhyPartnerInitial, 400);
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          centerWhyPartnerInitial();
+        }
+      });
+    }, { threshold: 0.15 });
+    const el = document.querySelector('.why-partner-track');
+    if (el) observer.observe(el);
   }
 })();

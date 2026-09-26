@@ -14426,20 +14426,25 @@ function ft({ children: t, className: i = "" }) {
   });
 }
 function j0() {
+  const loc = hi();
   const [t, i] = E.useState(!1),
     [l, s] = E.useState(!1),
     [vNav, setVNav] = E.useState(!1);
+  const p = (loc && loc.pathname ? loc.pathname : window.location.pathname).toLowerCase().replace(/\/$/, "");
+  const isMorph =
+    p === "" ||
+    p.endsWith("/index.html") ||
+    p.endsWith("/company%20website") ||
+    p.endsWith("/company website") ||
+    (typeof document !== "undefined" && !!document.querySelector(".hero-desktop-intro"));
+
   E.useEffect(() => {
-    const isMorph =
-      !!document.querySelector(".hero-desktop-intro") ||
-      window.location.pathname === "/" ||
-      window.location.pathname.endsWith("index.html");
     let ticking = !1,
       currNav = !1;
     const check = () => {
       const isDesktop = window.innerWidth >= 768;
       const hero = document.querySelector(".hero-desktop-intro");
-      const y = window.scrollY;
+      const y = window.scrollY || window.pageYOffset || 0;
       s(y > 50);
       if (!isMorph || !hero || !isDesktop) {
         if (!currNav) {
@@ -14449,10 +14454,10 @@ function j0() {
         return;
       }
       const rect = hero.getBoundingClientRect();
-      if (!currNav && rect.bottom <= 50) {
+      if (!currNav && rect.bottom <= 120) {
         currNav = !0;
         setVNav(!0);
-      } else if (currNav && rect.bottom > 110) {
+      } else if (currNav && rect.bottom > 140) {
         currNav = !1;
         setVNav(!1);
       }
@@ -14468,21 +14473,29 @@ function j0() {
     };
     window.addEventListener("scroll", onScroll, { passive: !0 });
     window.addEventListener("resize", onScroll, { passive: !0 });
+    if (window.lenis && typeof window.lenis.on === "function") {
+      window.lenis.on("scroll", onScroll);
+    }
     check();
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      if (window.lenis && typeof window.lenis.off === "function") {
+        window.lenis.off("scroll", onScroll);
+      }
     };
-  }, []);
+  }, [isMorph]);
   const o = () => {
       i(!t);
     },
     u = () => {
       i(!1);
     };
-  const mClass = vNav ? "nav-morph-visible" : "nav-morph-hidden";
+  const containerClass = isMorph ? "header-morph-container" : "sticky";
+  const mClass = isMorph ? (vNav ? "nav-morph-visible" : "nav-morph-hidden") : "";
+  const isGlass = isMorph ? (vNav || l) : l;
   return m.jsx("header", {
-    className: `header-morph-container ${mClass} sticky top-0 z-50 transition-all duration-300 ${l ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-white"}`,
+    className: `${containerClass} ${mClass} top-0 z-50 ${isGlass ? "bg-white/80 backdrop-blur-md shadow-sm" : "bg-white"}`,
     children: m.jsx("nav", {
       children: m.jsx("div", {
         className: "max-w-7xl mx-auto px-6",
@@ -14647,14 +14660,14 @@ const Er = {
 function A0() {
   const t = new Date().getFullYear();
   return m.jsx("footer", {
-    className: "bg-[#070707] overflow-hidden",
+    className: "site-footer bg-[#070707] overflow-hidden",
     children: m.jsx("div", {
-      className: "pt-20",
+      className: "pt-10 sm:pt-20",
       children: m.jsxs("div", {
         className: "max-w-7xl mx-auto px-6",
         children: [
           m.jsx("div", {
-            className: "mb-16",
+            className: "site-footer-logo-wrap mb-8 sm:mb-16",
             children: m.jsx(Se, {
               to: "/",
               children: m.jsx("img", {
@@ -14665,17 +14678,18 @@ function A0() {
           }),
           m.jsxs("div", {
             className:
-              "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 justify-between gap-12 pb-8 sm:pb-16",
+              "site-footer-grid grid grid-cols-2 md:grid-cols-4 justify-between gap-x-6 gap-y-8 sm:gap-12 pb-8 sm:pb-16",
             children: [
               m.jsxs("div", {
+                className: "site-footer-col order-1",
                 children: [
                   m.jsx("h4", {
-                    className: "text-lg font-semibold text-white mb-4",
+                    className: "site-footer-heading text-base sm:text-lg font-semibold text-white mb-2.5 sm:mb-4",
                     children: "Studio",
                   }),
                   m.jsx("ul", {
                     className:
-                      "space-y-4 text-white [&>li>a]:text-base [&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300",
+                      "site-footer-links space-y-2 sm:space-y-4 text-white [&>li>a]:text-sm sm:[&>li>a]:text-base [&>li>a]:leading-snug sm:[&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300",
                     children: Er.useCases.map((i, l) =>
                       m.jsx(
                         "li",
@@ -14692,14 +14706,15 @@ function A0() {
                 ],
               }),
               m.jsxs("div", {
+                className: "site-footer-col order-3 md:order-2",
                 children: [
                   m.jsx("h4", {
-                    className: "text-lg font-semibold text-white mb-4",
+                    className: "site-footer-heading text-base sm:text-lg font-semibold text-white mb-2.5 sm:mb-4",
                     children: "Services",
                   }),
                   m.jsx("ul", {
                     className:
-                      "space-y-4 text-white [&>li>a]:text-base [&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300",
+                      "site-footer-links space-y-2 sm:space-y-4 text-white [&>li>a]:text-sm sm:[&>li>a]:text-base [&>li>a]:leading-snug sm:[&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300",
                     children: Er.services.map((i, l) =>
                       m.jsx(
                         "li",
@@ -14716,14 +14731,15 @@ function A0() {
                 ],
               }),
               m.jsxs("div", {
+                className: "site-footer-col order-4 md:order-3",
                 children: [
                   m.jsx("h4", {
-                    className: "text-lg font-semibold text-white mb-4",
+                    className: "site-footer-heading text-base sm:text-lg font-semibold text-white mb-2.5 sm:mb-4",
                     children: "Featured Work",
                   }),
                   m.jsx("ul", {
                     className:
-                      "space-y-4 text-white [&>li>a]:text-base [&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300",
+                      "site-footer-links space-y-2 sm:space-y-4 text-white [&>li>a]:text-sm sm:[&>li>a]:text-base [&>li>a]:leading-snug sm:[&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300",
                     children: Er.resources.map((i, l) =>
                       m.jsx(
                         "li",
@@ -14740,14 +14756,15 @@ function A0() {
                 ],
               }),
               m.jsxs("div", {
+                className: "site-footer-col order-2 md:order-4",
                 children: [
                   m.jsx("h4", {
-                    className: "text-lg font-semibold text-white mb-4",
+                    className: "site-footer-heading text-base sm:text-lg font-semibold text-white mb-2.5 sm:mb-4",
                     children: "Connect",
                   }),
                   m.jsx("ul", {
                     className:
-                      "space-y-4 text-white [&>li>a]:text-base [&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300",
+                      "site-footer-links space-y-2 sm:space-y-4 text-white [&>li>a]:text-sm sm:[&>li>a]:text-base [&>li>a]:leading-snug sm:[&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300",
                     children: Er.contact.map((i, l) =>
                       m.jsx(
                         "li",
@@ -14766,16 +14783,17 @@ function A0() {
             ],
           }),
           m.jsxs("div", {
-            className: "flex flex-col pb-10",
+            className: "flex flex-col pb-8 sm:pb-10",
             children: [
               m.jsx("div", {
-                className: "mb-6",
+                className: "site-footer-svg-wrap mb-4 sm:mb-6 overflow-hidden",
                 children: m.jsxs("svg", {
                   xmlns: "http://www.w3.org/2000/svg",
                   width: 1281,
                   height: 178,
                   viewBox: "0 0 1281 178",
                   fill: "none",
+                  className: "w-full h-auto max-h-14 sm:max-h-none",
                   children: [
                     m.jsx("defs", {
                       children: m.jsxs("linearGradient", {
@@ -14876,11 +14894,11 @@ function A0() {
                 }),
               }),
               m.jsxs("div", {
-                className: "flex flex-col sm:flex-row gap-5 justify-between",
+                className: "site-footer-bottom flex flex-col sm:flex-row gap-3 sm:gap-5 justify-between",
                 children: [
                   m.jsxs("div", {
                     className:
-                      "flex space-x-4 text-white [&>a]:text-base [&>a]:leading-6 [&>a]:hover:text-white/80 [&>a]:transition",
+                      "flex space-x-4 text-white text-xs sm:text-base [&>a]:hover:text-white/80 [&>a]:transition",
                     children: [
                       m.jsx("a", {
                         href: "#",
@@ -14893,7 +14911,7 @@ function A0() {
                   m.jsx("div", {
                     children: m.jsxs("p", {
                       className:
-                        "text-white text-base hover:text-white/80 transition",
+                        "text-white text-xs sm:text-base hover:text-white/80 transition",
                       children: ["© ", t, " PlaceHOLDER. All rights reserved."],
                     }),
                   }),
@@ -21501,9 +21519,9 @@ function MS() {
             className: "max-w-3xl text-center mx-auto",
             children: [
               m.jsxs(Ye.h1, {
-                initial: { opacity: 0, y: 20 },
+                initial: !1,
                 animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.5, delay: 0.2 },
+                transition: { duration: 0.5, delay: 0.1 },
                 className:
                   "text-5xl lg:text-7xl font-normal -tracking-[2.88px] mb-4 text-black",
                 children: [
@@ -21516,18 +21534,18 @@ function MS() {
                 ],
               }),
               m.jsx(Ye.p, {
-                initial: { opacity: 0, y: 20 },
+                initial: !1,
                 animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.5, delay: 0.4 },
+                transition: { duration: 0.5, delay: 0.2 },
                 className:
                   "mb-8 lg:mb-12 text-gray-700 text-lg leading-6 -tracking-[0.2px] max-w-xl mx-auto",
                 children:
                   "Founded by student developers in Zamboanga City. We design and build clean, custom web and mobile software to help businesses scale and grow.",
               }),
               m.jsxs(Ye.div, {
-                initial: { opacity: 0, y: 20 },
+                initial: !1,
                 animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.5, delay: 0.6 },
+                transition: { duration: 0.5, delay: 0.3 },
                 className:
                   "flex flex-col sm:flex-row justify-center items-center gap-5",
                 children: [
@@ -21567,41 +21585,73 @@ function MS() {
     ],
   });
 }
-const Re = ({ children: t, width: i = "fit-content", delay: l = 0.25 }) => {
-  const s = E.useRef(null),
-    o = mv(s, { once: !0 }),
-    u = CS();
-  return (
-    E.useEffect(() => {
-      o && u.start("visible");
-    }, [o, u]),
-    m.jsx("div", {
-      ref: s,
-      style: { position: "relative", width: i, overflow: "hidden" },
-      children: m.jsx(Ye.div, {
-        variants: {
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 },
-        },
-        initial: "hidden",
-        animate: u,
-        transition: { duration: 0.5, delay: l },
-        children: t,
-      }),
-    })
-  );
+const Re = ({ children: t, width: i = "fit-content", delay: l = 0 }) => {
+  const ref = E.useRef(null);
+  const [isVisible, setIsVisible] = E.useState(false);
+  const delaySec = typeof l === "number" && !isNaN(l) ? l : 0;
+
+  E.useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.9 && rect.bottom > 0) {
+      setIsVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: "0px 0px 40px 0px",
+        threshold: 0,
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return m.jsx("div", {
+    ref: ref,
+    className: "screen-appear-block",
+    style: {
+      position: "relative",
+      width: i,
+      opacity: isVisible ? 1 : 0,
+      transform: isVisible ? "none" : "translate3d(0, 42px, 0)",
+      transition: `opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) ${delaySec}s, transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) ${delaySec}s`,
+      willChange: isVisible ? "auto" : "opacity, transform",
+    },
+    children: t,
+  });
 };
 function md() {
   const t = E.useRef(null);
   return (
     E.useEffect(() => {
       const i = t.current;
-      if (i) {
-        i.insertAdjacentHTML("afterend", i.outerHTML);
-        const l = i.nextSibling;
-        l && l.setAttribute("aria-hidden", "true");
+      if (i && !i.getAttribute("data-cloned")) {
+        i.setAttribute("data-cloned", "true");
+        const next = i.nextElementSibling;
+        if (!next || !next.classList.contains("animate-infinite-scroll")) {
+          i.insertAdjacentHTML("afterend", i.outerHTML);
+          const l = i.nextSibling;
+          l && l.setAttribute("aria-hidden", "true");
+        }
       }
-      window.initLiquidSilk && window.initLiquidSilk();
+      if (window.initLiquidSilk) {
+        window.initLiquidSilk();
+        setTimeout(window.initLiquidSilk, 60);
+        setTimeout(window.initLiquidSilk, 250);
+      }
     }, []),
     m.jsx("section", {
       children: m.jsxs("div", {
@@ -21865,30 +21915,6 @@ function pd() {
 const NS = [
   {
     id: 1,
-    title: "Direct Founder Access",
-    description:
-      "Work directly with senior engineers and product designers. Zero junior handoffs, no middle-management bloat, and total sprint visibility.",
-    icon: m.jsxs("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      width: "48",
-      height: "48",
-      viewBox: "0 0 24 24",
-      fill: "none",
-      stroke: "currentColor",
-      strokeWidth: "1.5",
-      strokeLinecap: "round",
-      strokeLinejoin: "round",
-      className: "text-black",
-      children: [
-        m.jsx("path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" }),
-        m.jsx("circle", { cx: "9", cy: "7", r: "4" }),
-        m.jsx("path", { d: "M22 21v-2a4 4 0 0 0-3-3.87" }),
-        m.jsx("path", { d: "M16 3.13a4 4 0 0 1 0 7.75" }),
-      ],
-    }),
-  },
-  {
-    id: 2,
     title: "Rapid MVP Delivery",
     description:
       "Lean milestone sprints focused on shipping validated, production-ready software in weeks so you can test real market demand fast.",
@@ -21912,6 +21938,30 @@ const NS = [
         }),
         m.jsx("path", { d: "M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" }),
         m.jsx("path", { d: "M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" }),
+      ],
+    }),
+  },
+  {
+    id: 2,
+    title: "Direct Founder Access",
+    description:
+      "Work directly with senior engineers and product designers. Zero junior handoffs, no middle-management bloat, and total sprint visibility.",
+    icon: m.jsxs("svg", {
+      xmlns: "http://www.w3.org/2000/svg",
+      width: "48",
+      height: "48",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "1.5",
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      className: "text-black",
+      children: [
+        m.jsx("path", { d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" }),
+        m.jsx("circle", { cx: "9", cy: "7", r: "4" }),
+        m.jsx("path", { d: "M22 21v-2a4 4 0 0 0-3-3.87" }),
+        m.jsx("path", { d: "M16 3.13a4 4 0 0 1 0 7.75" }),
       ],
     }),
   },
@@ -21963,6 +22013,41 @@ const NS = [
   },
 ];
 function DS() {
+  E.useEffect(() => {
+    let userInteracted = false;
+    const centerCard = () => {
+      if (window.innerWidth >= 640 || userInteracted) return;
+      const track = document.querySelector(".why-partner-track");
+      if (!track) return;
+      const target = track.querySelector('[data-card="rapid-mvp"]');
+      if (target) {
+        const offset = target.offsetLeft - ((window.innerWidth - target.offsetWidth) / 2);
+        track.scrollLeft = offset;
+      }
+    };
+    centerCard();
+    const t1 = setTimeout(centerCard, 50);
+    const t2 = setTimeout(centerCard, 200);
+    const t3 = setTimeout(centerCard, 500);
+    const track = document.querySelector(".why-partner-track");
+    const onUserInteract = () => { userInteracted = true; };
+    if (track) {
+      track.addEventListener("touchstart", onUserInteract, { passive: true });
+      track.addEventListener("pointerdown", onUserInteract, { passive: true });
+    }
+    window.addEventListener("resize", centerCard);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      if (track) {
+        track.removeEventListener("touchstart", onUserInteract);
+        track.removeEventListener("pointerdown", onUserInteract);
+      }
+      window.removeEventListener("resize", centerCard);
+    };
+  }, []);
+
   return m.jsx("section", {
     className: "py-12 lg:py-25",
     children: m.jsx("div", {
@@ -21971,33 +22056,70 @@ function DS() {
         children: [
           m.jsxs("h2", {
             className:
-              "lg:w-4/12 mb-8 lg:mb-16 font-normal text-5xl text-black -tracking-[1.92px]",
+              "why-partner-header lg:w-4/12 mb-8 lg:mb-16 font-normal text-5xl text-black -tracking-[1.92px]",
             children: [
               "Why Partner ",
               m.jsx("span", { className: "italic", children: "With Us " }),
             ],
           }),
-          m.jsx("div", {
-            className: "grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
-            children: NS.map((t) =>
-              m.jsxs(
-                "article",
-                {
-                  children: [
-                    t.icon,
-                    m.jsx("h4", {
-                      className: "mb-5 mt-8 text-2xl font-normal text-black",
-                      children: t.title,
-                    }),
-                    m.jsx("p", {
-                      className: "text-lg text-gray-700",
-                      children: t.description,
-                    }),
-                  ],
-                },
-                t.id,
+          m.jsxs("div", {
+            className:
+              "why-partner-track grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+            children: [
+              m.jsxs("article", {
+                className: "why-partner-card why-partner-clone",
+                "aria-hidden": "true",
+                children: [
+                  NS[3].icon,
+                  m.jsx("h4", {
+                    className: "mb-5 mt-8 text-2xl font-normal text-black",
+                    children: NS[3].title,
+                  }),
+                  m.jsx("p", {
+                    className: "text-lg text-gray-700 leading-relaxed",
+                    children: NS[3].description,
+                  }),
+                ],
+              }),
+              ...NS.map((t) =>
+                m.jsxs(
+                  "article",
+                  {
+                    className: "why-partner-card",
+                    ...(t.id === 1 ? { "data-card": "rapid-mvp" } : {}),
+                    children: [
+                      t.icon,
+                      m.jsx("h4", {
+                        className:
+                          "mb-5 mt-8 text-2xl font-normal text-black",
+                        children: t.title,
+                      }),
+                      m.jsx("p", {
+                        className:
+                          "text-lg text-gray-700 leading-relaxed",
+                        children: t.description,
+                      }),
+                    ],
+                  },
+                  t.id,
+                ),
               ),
-            ),
+              m.jsxs("article", {
+                className: "why-partner-card why-partner-clone",
+                "aria-hidden": "true",
+                children: [
+                  NS[0].icon,
+                  m.jsx("h4", {
+                    className: "mb-5 mt-8 text-2xl font-normal text-black",
+                    children: NS[0].title,
+                  }),
+                  m.jsx("p", {
+                    className: "text-lg text-gray-700 leading-relaxed",
+                    children: NS[0].description,
+                  }),
+                ],
+              }),
+            ],
           }),
         ],
       }),
@@ -26955,6 +27077,8 @@ const nexServices = [
 ];
 function f9() {
   const [a, setA] = E.useState(0);
+  const secRef = E.useRef(null);
+  const [isInView, setIsInView] = E.useState(!0);
   const len = nexServices.length;
   const curr = ((a % len) + len) % len;
   const next = E.useCallback(() => {
@@ -26965,9 +27089,22 @@ function f9() {
     d > 0 && setA((v) => v + d);
   };
   E.useEffect(() => {
-    const t = setInterval(next, 2000);
+    const el = secRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  E.useEffect(() => {
+    if (!isInView) return;
+    const t = setInterval(next, 4500);
     return () => clearInterval(t);
-  }, [next, a]);
+  }, [next, a, isInView]);
   const status = (idx) => {
     let d = idx - curr;
     if (d > len / 2) d -= len;
@@ -26979,6 +27116,7 @@ function f9() {
     return ((((v - min) % r) + r) % r) + min;
   };
   return m.jsx("section", {
+    ref: secRef,
     className: "services-hero-section",
     children: m.jsxs("div", {
       className: "max-w-7xl mx-auto px-6",
@@ -27095,7 +27233,7 @@ function f9() {
                         children:
                           S &&
                           m.jsx(Ye.div, {
-                            initial: { opacity: 0, y: 20 },
+                            initial: !1,
                             animate: { opacity: 1, y: 0 },
                             exit: { opacity: 0, y: 10 },
                             className: "fc-card-gradient",
@@ -28114,7 +28252,7 @@ function ServicesCapabilities() {
   ];
 
   return m.jsx("section", {
-    className: "py-16 lg:py-25 bg-[#FBFBFB]",
+    className: "services-capabilities-section bg-[#FBFBFB]",
     children: m.jsxs("div", {
       className: "max-w-7xl mx-auto px-6",
       children: [
@@ -29745,7 +29883,7 @@ function L9({
                             ],
                           }),
                           m.jsxs("div", {
-                            className: "grid grid-cols-1 sm:grid-cols-2 gap-4",
+                            className: "contact-form-grid grid grid-cols-1 sm:grid-cols-2 gap-4",
                             children: [
                               m.jsx("input", {
                                 type: "text",
@@ -29791,7 +29929,7 @@ function L9({
                                 value: t.message,
                                 onChange: o,
                                 className:
-                                  "col-span-2 px-8 py-4 rounded-3xl resize-none border border-[#E9E9EA] focus:outline-none focus:border-black focus:ring-2 focus:ring-offset-2 focus:ring-black/30 h-32 placeholder:text-gray-500 text-base w-full",
+                                  "col-span-1 sm:col-span-2 px-8 py-4 rounded-3xl resize-none border border-[#E9E9EA] focus:outline-none focus:border-black focus:ring-2 focus:ring-offset-2 focus:ring-black/30 h-32 placeholder:text-gray-500 text-base w-full",
                               }),
                             ],
                           }),
@@ -29804,20 +29942,38 @@ function L9({
                             children: "What services you need?",
                           }),
                           m.jsx("ul", {
-                            className: "flex flex-wrap gap-3",
+                            className: "contact-services-grid flex flex-wrap gap-3",
                             children: g.map((h) =>
                               m.jsx(
                                 "li",
                                 {
-                                  children: m.jsx("button", {
+                                  children: m.jsxs("button", {
                                     type: "button",
                                     onClick: () => u(h),
                                     className:
-                                      "px-4 py-2.5 border border-[#E9E9EA] text-base font-mono font-normal -tracking-[0.32px] rounded-full cursor-pointer transition " +
+                                      "contact-service-pill px-4 py-2.5 border text-base font-normal rounded-full cursor-pointer transition flex items-center justify-center gap-2 " +
                                       (l.includes(h)
                                         ? "bg-black text-white border-black"
-                                        : "bg-white text-[#1D1F2C] hover:border-black"),
-                                    children: h,
+                                        : "bg-white text-[#1D1F2C] border-[#E9E9EA] hover:border-black"),
+                                    children: [
+                                      m.jsx("span", { children: h }),
+                                      l.includes(h) &&
+                                        m.jsx("svg", {
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          width: "15",
+                                          height: "15",
+                                          viewBox: "0 0 24 24",
+                                          fill: "none",
+                                          stroke: "currentColor",
+                                          strokeWidth: "2.5",
+                                          strokeLinecap: "round",
+                                          strokeLinejoin: "round",
+                                          className: "shrink-0",
+                                          children: m.jsx("path", {
+                                            d: "M20 6 9 17l-5-5",
+                                          }),
+                                        }),
+                                    ],
                                   }),
                                 },
                                 h,
@@ -30484,6 +30640,23 @@ const _9 = () => [
 ];
 function V9() {
   const [t, i] = E.useState("All Projects");
+  const [isDropdownOpen, setIsDropdownOpen] = E.useState(false);
+  const dropdownRef = E.useRef(null);
+
+  E.useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    if (isDropdownOpen) {
+      document.addEventListener("pointerdown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("pointerdown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
   const l = E.useMemo(() => _9(), []);
   const s =
     t === "All Projects" || t === "All"
@@ -30506,41 +30679,119 @@ function V9() {
               m.jsx("span", { className: "italic", children: "Projects" }),
             ],
           }),
-          m.jsx("div", {
+          m.jsxs("div", {
             className: "mb-12",
-            children: m.jsx("ul", {
-              className: "flex gap-3 flex-wrap",
-              children: z9.map((o) =>
-                m.jsx(
-                  "li",
-                  {
-                    children: m.jsxs("button", {
-                      onClick: () => i(o),
-                      className:
-                        "px-6 py-2.5 rounded-full text-sm font-medium cursor-pointer transition relative border " +
-                        (t === o
-                          ? "text-white border-transparent"
-                          : "text-[#1D1F2C] border-[#E9E9EA]"),
+            children: [
+              m.jsx("div", {
+                className: "portfolio-filter-mobile",
+                ref: dropdownRef,
+                children: m.jsxs("div", {
+                  className: "portfolio-filter-dropdown-wrap",
+                  children: [
+                    m.jsxs("button", {
+                      type: "button",
+                      onClick: () => setIsDropdownOpen(!isDropdownOpen),
+                      className: "portfolio-filter-trigger",
+                      "aria-expanded": isDropdownOpen,
+                      "aria-haspopup": "listbox",
                       children: [
-                        t === o &&
-                          m.jsx(Ye.span, {
-                            layoutId: "activeTab",
-                            className:
-                              "absolute inset-0 bg-black rounded-full -z-10",
-                            transition: {
-                              type: "spring",
-                              bounce: 0.2,
-                              duration: 0.6,
-                            },
-                          }),
-                        o,
+                        m.jsx("span", { children: t }),
+                        m.jsx("svg", {
+                          xmlns: "http://www.w3.org/2000/svg",
+                          width: "20",
+                          height: "20",
+                          viewBox: "0 0 24 24",
+                          fill: "none",
+                          stroke: "currentColor",
+                          strokeWidth: "2",
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          className:
+                            "portfolio-filter-chevron" +
+                            (isDropdownOpen ? " is-open" : ""),
+                          children: m.jsx("path", { d: "m6 9 6 6 6-6" }),
+                        }),
                       ],
                     }),
-                  },
-                  o,
+                    isDropdownOpen &&
+                      m.jsx("div", {
+                        className: "portfolio-filter-menu",
+                        role: "listbox",
+                        children: z9.map((o) =>
+                          m.jsxs(
+                            "button",
+                            {
+                              type: "button",
+                              role: "option",
+                              "aria-selected": t === o,
+                              onClick: () => {
+                                i(o);
+                                setIsDropdownOpen(false);
+                              },
+                              className:
+                                "portfolio-filter-item" +
+                                (t === o ? " is-active" : ""),
+                              children: [
+                                m.jsx("span", { children: o }),
+                                t === o &&
+                                  m.jsx("svg", {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    width: "18",
+                                    height: "18",
+                                    viewBox: "0 0 24 24",
+                                    fill: "none",
+                                    stroke: "currentColor",
+                                    strokeWidth: "2.5",
+                                    strokeLinecap: "round",
+                                    strokeLinejoin: "round",
+                                    className: "portfolio-filter-item-check",
+                                    children: m.jsx("path", {
+                                      d: "M20 6 9 17l-5-5",
+                                    }),
+                                  }),
+                              ],
+                            },
+                            o,
+                          ),
+                        ),
+                      }),
+                  ],
+                }),
+              }),
+              m.jsx("ul", {
+                className: "portfolio-filter-desktop flex gap-3 flex-wrap",
+                children: z9.map((o) =>
+                  m.jsx(
+                    "li",
+                    {
+                      children: m.jsxs("button", {
+                        onClick: () => i(o),
+                        className:
+                          "px-6 py-2.5 rounded-full text-sm font-medium cursor-pointer transition relative border " +
+                          (t === o
+                            ? "text-white border-transparent"
+                            : "text-[#1D1F2C] border-[#E9E9EA]"),
+                        children: [
+                          t === o &&
+                            m.jsx(Ye.span, {
+                              layoutId: "activeTab",
+                              className:
+                                "absolute inset-0 bg-black rounded-full -z-10",
+                              transition: {
+                                type: "spring",
+                                bounce: 0.2,
+                                duration: 0.6,
+                              },
+                            }),
+                          o,
+                        ],
+                      }),
+                    },
+                    o,
+                  ),
                 ),
-              ),
-            }),
+              }),
+            ],
           }),
         ],
       }),
