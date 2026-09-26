@@ -550,6 +550,231 @@ section.pt-25 .grid img {
   color: #111827;
 }
 
+/* ==========================================================================
+   Full-Cycle Engineering Capabilities - 21st.dev Service Cards (Monochrome)
+   ========================================================================== */
+.capabilities-intro {
+  margin-bottom: 3.5rem !important;
+}
+@media (min-width: 768px) {
+  .capabilities-intro {
+    margin-bottom: 4.5rem !important;
+  }
+}
+
+.service-card-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 1.75rem !important;
+  margin-top: 3.5rem !important;
+}
+@media (min-width: 640px) {
+  .service-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 2rem !important;
+  }
+}
+@media (min-width: 1024px) {
+  .service-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 2rem !important;
+    margin-top: 4.5rem !important;
+  }
+}
+
+/* Card Base */
+.service-card {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 290px !important;
+  padding: 2.25rem 2rem !important;
+  border-radius: 1.5rem !important;
+  overflow: hidden !important;
+  cursor: default !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.25s ease !important;
+}
+@media (min-width: 768px) {
+  .service-card {
+    padding: 2.5rem 2.25rem !important;
+  }
+}
+.service-card:hover {
+  transform: translateY(-5px) scale(1.015) !important;
+}
+
+/* Content Area */
+.service-card-content {
+  position: relative !important;
+  z-index: 10 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  max-width: 100% !important;
+}
+@media (min-width: 480px) {
+  .service-card-content {
+    max-width: 82% !important;
+  }
+}
+
+.service-card-title {
+  font-size: 1.45rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.6px !important;
+  line-height: 1.3 !important;
+  margin-bottom: 1rem !important;
+}
+.service-card-desc {
+  font-size: 0.9375rem !important;
+  line-height: 1.65 !important;
+  font-weight: 400 !important;
+  margin-bottom: 2rem !important;
+}
+.service-card-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 0.4rem 0.85rem !important;
+  margin-top: auto !important;
+  max-width: calc(100% - 95px) !important;
+}
+@media (min-width: 640px) {
+  .service-card-chips {
+    max-width: calc(100% - 105px) !important;
+  }
+}
+@media (min-width: 1024px) {
+  .service-card-chips {
+    max-width: calc(100% - 110px) !important;
+  }
+}
+.service-chip {
+  display: inline-block !important;
+  font-family: var(--font-mono, monospace) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  white-space: nowrap !important;
+  transition: color 0.2s ease !important;
+}
+.service-chip:not(:last-child)::after {
+  content: "·" !important;
+  margin-left: 0.85rem !important;
+  font-weight: 700 !important;
+  opacity: 0.35 !important;
+}
+
+/* Decorative 3D Art Object in Bottom Right */
+.service-card-art {
+  position: absolute !important;
+  right: -10px !important;
+  bottom: -10px !important;
+  width: 125px !important;
+  height: 125px !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  opacity: 0.95 !important;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+}
+@media (min-width: 640px) {
+  .service-card-art {
+    width: 140px !important;
+    height: 140px !important;
+    right: -12px !important;
+    bottom: -12px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .service-card-art {
+    width: 145px !important;
+    height: 145px !important;
+    right: -14px !important;
+    bottom: -14px !important;
+  }
+}
+.service-card:hover .service-card-art {
+  transform: scale(1.12) rotate(3deg) translate(-4px, -4px) !important;
+  opacity: 1 !important;
+}
+
+/* Variants: White, Gray, Black */
+/* 1. White Variant */
+.service-card--white {
+  background-color: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04) !important;
+}
+.service-card--white:hover {
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.09) !important;
+  border-color: rgba(0, 0, 0, 0.16) !important;
+}
+.service-card--white .service-card-title {
+  color: #09090B !important;
+}
+.service-card--white .service-card-desc {
+  color: #52525B !important;
+}
+.service-card--white .service-chip {
+  color: #71717A !important;
+}
+.service-card--white:hover .service-chip {
+  color: #27272A !important;
+}
+
+/* 2. Gray Variant */
+.service-card--gray {
+  background-color: #F1F2F5 !important;
+  border: 1px solid rgba(0, 0, 0, 0.07) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03) !important;
+}
+.service-card--gray:hover {
+  box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.14) !important;
+}
+.service-card--gray .service-card-title {
+  color: #09090B !important;
+}
+.service-card--gray .service-card-desc {
+  color: #4B5563 !important;
+}
+.service-card--gray .service-chip {
+  color: #52525B !important;
+}
+.service-card--gray:hover .service-chip {
+  color: #18181B !important;
+}
+
+/* 3. Black Variant */
+.service-card--black {
+  background-color: #0D0E12 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 30px -5px rgba(0, 0, 0, 0.4) !important;
+}
+.service-card--black:hover {
+  box-shadow: 0 24px 48px -8px rgba(0, 0, 0, 0.6) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+}
+.service-card--black .service-card-title {
+  color: #FFFFFF !important;
+}
+.service-card--black .service-card-desc {
+  color: #A1A1AA !important;
+}
+.service-card--black .service-chip {
+  color: #9CA3AF !important;
+}
+.service-card--black:hover .service-chip {
+  color: #E4E4E7 !important;
+}
+
+
 
 
 

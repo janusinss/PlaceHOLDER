@@ -4,6 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
     const p = window.location.pathname;
     const isLocalSubdir = p.includes('/YEAR%204/COMPANY%20WEBSITE') || p.includes('/YEAR 4/COMPANY WEBSITE');
     document.write('<base href="' + (isLocalSubdir ? '/YEAR%204/COMPANY%20WEBSITE/' : '/') + '">');
@@ -307,6 +313,8 @@
               <ul class="space-y-4 text-white [&amp;&gt;li&gt;a]:text-base [&amp;&gt;li&gt;a]:leading-6 [&amp;&gt;li&gt;a]:opacity-80 [&amp;&gt;li&gt;a]:hover:opacity-100 [&amp;&gt;li&gt;a]:transition-opacity [&amp;&gt;li&gt;a]:duration-300">
                 <li><a href="https://freshcart.ct.ws/" target="_blank" rel="noopener noreferrer">FreshCart E-Commerce</a></li>
                 <li><a href="https://quicknote.ct.ws/?i=2" target="_blank" rel="noopener noreferrer">QuickNote Productivity</a></li>
+                <li><a href="https://ana-seven-silk.vercel.app/" target="_blank" rel="noopener noreferrer">A.N.A Digital Gallery</a></li>
+                <li><a href="https://syrupynut.pages.dev/" target="_blank" rel="noopener noreferrer">Syrupynut Commission Hub</a></li>
                 <li><a href="https://becoffee-cafe.web.app/" target="_blank" rel="noopener noreferrer">BeCoffee Roastery</a></li>
                 <li><a href="https://serene-smile.netlify.app/" target="_blank" rel="noopener noreferrer">Serene Smile Clinic</a></li>
                 <li><a href="portfolio.html">All Case Studies &rarr;</a></li>

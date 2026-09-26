@@ -14631,6 +14631,8 @@ const Er = {
   resources: [
     { label: "FreshCart E-Commerce", href: "https://freshcart.ct.ws/" },
     { label: "QuickNote Productivity", href: "https://quicknote.ct.ws/?i=2" },
+    { label: "A.N.A Digital Gallery", href: "https://ana-seven-silk.vercel.app/" },
+    { label: "Syrupynut Commission Hub", href: "https://syrupynut.pages.dev/" },
     { label: "BeCoffee Roastery", href: "https://becoffee-cafe.web.app/" },
     { label: "Serene Smile Clinic", href: "https://serene-smile.netlify.app/" },
     { label: "All Case Studies →", href: "portfolio.html" },
@@ -16195,7 +16197,9 @@ function iy() {
       }),
       t.forEach((s) => s.measureEndState()),
       t.forEach((s) => {
-        s.suspendedScrollY !== void 0 && window.scrollTo(0, s.suspendedScrollY);
+        !window._suppressScrollRestore &&
+          s.suspendedScrollY !== void 0 &&
+          window.scrollTo(0, s.suspendedScrollY);
       }));
   }
   ((hf = !1), (df = !1), Hi.forEach((t) => t.complete(mf)), Hi.clear());
@@ -26718,7 +26722,7 @@ const c9 = [
     socials: {
       facebook: "https://www.facebook.com/giselo.bunao",
       github: "https://github.com",
-      portfolio: "#",
+      portfolio: "https://snorlaxx-portfolio.web.app/",
     },
   },
   {
@@ -27342,15 +27346,953 @@ function Rv() {
     }),
   });
 }
+function AboutPrinciples() {
+  const principles = [
+    {
+      num: "01",
+      title: "Direct Lead Engineering",
+      desc: "Every line of code and architectural decision is authored directly by our founding engineers. No junior handoffs, no middle-management layers.",
+    },
+    {
+      num: "02",
+      title: "Zero Bloat Architecture",
+      desc: "We build modular, maintainable software using React, TypeScript, and Python designed for sub-second load times and zero hidden technical debt.",
+    },
+    {
+      num: "03",
+      title: "Radical Sprint Visibility",
+      desc: "Weekly staging deployments, transparent Git milestone commits, and live interactive demos ensure you always see working software early.",
+    },
+    {
+      num: "04",
+      title: "Born in Mindanao, Built Global",
+      desc: "Proving that world-class software engineering and bespoke UI craftsmanship thrive right from Zamboanga City to global production standards.",
+    },
+  ];
+
+  return m.jsx("section", {
+    className: "bg-black py-20 rounded-4xl",
+    children: m.jsx("div", {
+      className: "max-w-7xl mx-auto px-6",
+      children: m.jsxs("div", {
+        className: "flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16",
+        children: [
+          m.jsxs("div", {
+            className: "lg:w-5/12 pr-0 lg:pr-4",
+            children: [
+              m.jsx("p", {
+                className:
+                  "text-xs font-mono uppercase tracking-[0.25em] text-gray-400 mb-4",
+                children: "Our Philosophy & Standard",
+              }),
+              m.jsxs("h2", {
+                className:
+                  "text-white text-4xl sm:text-5xl font-normal leading-tight",
+                children: [
+                  "Crafting Clean Code, ",
+                  m.jsx("br", {}),
+                  m.jsx("span", {
+                    className: "italic font-serif",
+                    children: "Engineered Without Shortcuts.",
+                  }),
+                ],
+              }),
+              m.jsx("p", {
+                className:
+                  "text-white/60 text-base sm:text-lg mt-6 leading-relaxed",
+                children:
+                  "We founded PlaceHOLDER in university computer labs with a clear realization: modern companies don't need agency overhead or sluggish junior handoffs. They need hungry, detail-obsessed engineers who ship production-grade digital software on tight milestone sprints.",
+              }),
+              m.jsxs("div", {
+                className:
+                  "mt-8 inline-flex items-center gap-3 px-4 py-2.5 rounded-full border border-white/10 bg-white/5 text-xs font-mono text-gray-300",
+                children: [
+                  m.jsx("span", {
+                    className: "w-2 h-2 rounded-full bg-emerald-400 animate-pulse",
+                  }),
+                  "5 Core Specialists • 100% In-House Code • Zero Outsourcing",
+                ],
+              }),
+            ],
+          }),
+          m.jsx("div", {
+            className: "lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-4",
+            children: principles.map((item) =>
+              m.jsxs(
+                "div",
+                {
+                  className:
+                    "p-6 rounded-2xl flex flex-col justify-between border border-white/10 bg-neutral-950/60 hover:border-white/20 transition-all duration-300",
+                  children: [
+                    m.jsx("span", {
+                      className:
+                        "text-xs font-mono text-emerald-400 mb-3 tracking-widest",
+                      children: item.num,
+                    }),
+                    m.jsx("h3", {
+                      className: "text-white text-lg font-medium mb-2",
+                      children: item.title,
+                    }),
+                    m.jsx("p", {
+                      className: "text-white/60 text-sm leading-relaxed",
+                      children: item.desc,
+                    }),
+                  ],
+                },
+                item.num,
+              ),
+            ),
+          }),
+        ],
+      }),
+    }),
+  });
+}
+function renderCapabilityArt(num) {
+  if (num === "01") {
+    return m.jsxs("svg", {
+      className: "service-card-art",
+      viewBox: "0 0 160 160",
+      fill: "none",
+      "aria-hidden": "true",
+      children: [
+        m.jsxs("defs", {
+          children: [
+            m.jsxs("linearGradient", {
+              id: "sc-w-grad1",
+              x1: "0",
+              y1: "0",
+              x2: "160",
+              y2: "160",
+              gradientUnits: "userSpaceOnUse",
+              children: [
+                m.jsx("stop", { offset: "0%", stopColor: "#27272A" }),
+                m.jsx("stop", { offset: "100%", stopColor: "#09090B" }),
+              ],
+            }),
+            m.jsxs("linearGradient", {
+              id: "sc-w-grad2",
+              x1: "20",
+              y1: "20",
+              x2: "140",
+              y2: "140",
+              gradientUnits: "userSpaceOnUse",
+              children: [
+                m.jsx("stop", { offset: "0%", stopColor: "#F4F4F5" }),
+                m.jsx("stop", { offset: "100%", stopColor: "#E4E4E7" }),
+              ],
+            }),
+            m.jsx("filter", {
+              id: "sc-w-shadow",
+              x: "0",
+              y: "0",
+              width: "160",
+              height: "160",
+              filterUnits: "userSpaceOnUse",
+              children: m.jsx("feDropShadow", {
+                dx: "2",
+                dy: "8",
+                stdDeviation: "6",
+                floodOpacity: "0.2",
+              }),
+            }),
+          ],
+        }),
+        m.jsxs("g", {
+          filter: "url(#sc-w-shadow)",
+          children: [
+            m.jsx("rect", {
+              x: "25",
+              y: "25",
+              width: "115",
+              height: "115",
+              rx: "14",
+              fill: "url(#sc-w-grad1)",
+            }),
+            m.jsx("rect", {
+              x: "25",
+              y: "25",
+              width: "115",
+              height: "26",
+              rx: "14",
+              fill: "#18181B",
+            }),
+            m.jsx("circle", { cx: "39", cy: "38", r: "3.5", fill: "#EF4444" }),
+            m.jsx("circle", { cx: "49", cy: "38", r: "3.5", fill: "#F59E0B" }),
+            m.jsx("circle", { cx: "59", cy: "38", r: "3.5", fill: "#10B981" }),
+            m.jsx("rect", {
+              x: "72",
+              y: "33",
+              width: "56",
+              height: "10",
+              rx: "5",
+              fill: "#27272A",
+            }),
+            m.jsx("rect", {
+              x: "36",
+              y: "60",
+              width: "42",
+              height: "26",
+              rx: "6",
+              fill: "#27272A",
+            }),
+            m.jsx("rect", {
+              x: "84",
+              y: "60",
+              width: "44",
+              height: "26",
+              rx: "6",
+              fill: "#27272A",
+            }),
+            m.jsx("rect", {
+              x: "36",
+              y: "93",
+              width: "92",
+              height: "34",
+              rx: "6",
+              fill: "#1F242F",
+            }),
+            m.jsx("rect", {
+              x: "70",
+              y: "80",
+              width: "65",
+              height: "48",
+              rx: "8",
+              fill: "url(#sc-w-grad2)",
+              stroke: "#D4D4D8",
+              strokeWidth: "1.5",
+            }),
+            m.jsx("rect", {
+              x: "80",
+              y: "90",
+              width: "30",
+              height: "5",
+              rx: "2.5",
+              fill: "#09090B",
+            }),
+            m.jsx("rect", {
+              x: "80",
+              y: "100",
+              width: "45",
+              height: "4",
+              rx: "2",
+              fill: "#71717A",
+            }),
+            m.jsx("circle", { cx: "118", cy: "108", r: "6", fill: "#18181B" }),
+          ],
+        }),
+      ],
+    });
+  }
+  if (num === "02") {
+    return m.jsxs("svg", {
+      className: "service-card-art",
+      viewBox: "0 0 160 160",
+      fill: "none",
+      "aria-hidden": "true",
+      children: [
+        m.jsxs("defs", {
+          children: [
+            m.jsxs("linearGradient", {
+              id: "sc-m-grad1",
+              x1: "0",
+              y1: "0",
+              x2: "160",
+              y2: "160",
+              gradientUnits: "userSpaceOnUse",
+              children: [
+                m.jsx("stop", { offset: "0%", stopColor: "#18181B" }),
+                m.jsx("stop", { offset: "100%", stopColor: "#09090B" }),
+              ],
+            }),
+            m.jsx("filter", {
+              id: "sc-m-shadow",
+              x: "0",
+              y: "0",
+              width: "160",
+              height: "160",
+              filterUnits: "userSpaceOnUse",
+              children: m.jsx("feDropShadow", {
+                dx: "3",
+                dy: "8",
+                stdDeviation: "6",
+                floodOpacity: "0.25",
+              }),
+            }),
+          ],
+        }),
+        m.jsxs("g", {
+          filter: "url(#sc-m-shadow)",
+          transform: "rotate(-6 85 85)",
+          children: [
+            m.jsx("rect", {
+              x: "42",
+              y: "16",
+              width: "82",
+              height: "135",
+              rx: "20",
+              fill: "url(#sc-m-grad1)",
+              stroke: "#3F3F46",
+              strokeWidth: "2",
+            }),
+            m.jsx("rect", {
+              x: "48",
+              y: "24",
+              width: "70",
+              height: "119",
+              rx: "14",
+              fill: "#000000",
+            }),
+            m.jsx("rect", {
+              x: "68",
+              y: "29",
+              width: "30",
+              height: "7",
+              rx: "3.5",
+              fill: "#27272A",
+            }),
+            m.jsx("rect", {
+              x: "54",
+              y: "44",
+              width: "58",
+              height: "24",
+              rx: "6",
+              fill: "#18181B",
+            }),
+            m.jsx("rect", {
+              x: "60",
+              y: "52",
+              width: "28",
+              height: "4",
+              rx: "2",
+              fill: "#FFFFFF",
+            }),
+            m.jsx("rect", {
+              x: "54",
+              y: "74",
+              width: "58",
+              height: "28",
+              rx: "6",
+              fill: "#27272A",
+            }),
+            m.jsx("rect", {
+              x: "54",
+              y: "107",
+              width: "26",
+              height: "22",
+              rx: "5",
+              fill: "#18181B",
+            }),
+            m.jsx("rect", {
+              x: "86",
+              y: "107",
+              width: "26",
+              height: "22",
+              rx: "5",
+              fill: "#18181B",
+            }),
+            m.jsx("circle", {
+              cx: "115",
+              cy: "42",
+              r: "13",
+              fill: "#FFFFFF",
+              stroke: "#09090B",
+              strokeWidth: "2",
+            }),
+            m.jsx("path", {
+              d: "M110 42l3.5 3.5 6.5-6.5",
+              stroke: "#09090B",
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+            }),
+          ],
+        }),
+      ],
+    });
+  }
+  if (num === "03") {
+    return m.jsxs("svg", {
+      className: "service-card-art",
+      viewBox: "0 0 160 160",
+      fill: "none",
+      "aria-hidden": "true",
+      children: [
+        m.jsxs("defs", {
+          children: [
+            m.jsxs("linearGradient", {
+              id: "sc-p-grad1",
+              x1: "20",
+              y1: "30",
+              x2: "150",
+              y2: "130",
+              gradientUnits: "userSpaceOnUse",
+              children: [
+                m.jsx("stop", { offset: "0%", stopColor: "#FFFFFF" }),
+                m.jsx("stop", { offset: "100%", stopColor: "#9CA3AF" }),
+              ],
+            }),
+            m.jsxs("linearGradient", {
+              id: "sc-p-chip",
+              x1: "0",
+              y1: "0",
+              x2: "1",
+              y2: "1",
+              children: [
+                m.jsx("stop", { offset: "0%", stopColor: "#E5E7EB" }),
+                m.jsx("stop", { offset: "100%", stopColor: "#9CA3AF" }),
+              ],
+            }),
+            m.jsx("filter", {
+              id: "sc-p-shadow",
+              x: "0",
+              y: "0",
+              width: "160",
+              height: "160",
+              filterUnits: "userSpaceOnUse",
+              children: m.jsx("feDropShadow", {
+                dx: "2",
+                dy: "8",
+                stdDeviation: "6",
+                floodOpacity: "0.4",
+              }),
+            }),
+          ],
+        }),
+        m.jsxs("g", {
+          filter: "url(#sc-p-shadow)",
+          transform: "rotate(-8 85 85)",
+          children: [
+            m.jsx("rect", {
+              x: "25",
+              y: "42",
+              width: "112",
+              height: "74",
+              rx: "12",
+              fill: "url(#sc-p-grad1)",
+            }),
+            m.jsx("rect", {
+              x: "36",
+              y: "58",
+              width: "18",
+              height: "14",
+              rx: "3",
+              fill: "url(#sc-p-chip)",
+              stroke: "#4B5563",
+              strokeWidth: "0.8",
+            }),
+            m.jsx("path", {
+              d: "M59 62a6 6 0 0 1 0 6M63 59a10 10 0 0 1 0 12",
+              stroke: "#1F2937",
+              strokeWidth: "1.5",
+              strokeLinecap: "round",
+            }),
+            m.jsx("rect", {
+              x: "36",
+              y: "86",
+              width: "48",
+              height: "5",
+              rx: "2.5",
+              fill: "#1F2937",
+            }),
+            m.jsx("circle", { cx: "114", cy: "94", r: "8", fill: "#111827" }),
+            m.jsx("circle", {
+              cx: "123",
+              cy: "94",
+              r: "8",
+              fill: "#4B5563",
+              fillOpacity: "0.8",
+            }),
+          ],
+        }),
+        m.jsx("circle", {
+          cx: "34",
+          cy: "118",
+          r: "14",
+          fill: "#1F2937",
+          stroke: "#9CA3AF",
+          strokeWidth: "1.5",
+        }),
+        m.jsx("path", {
+          d: "M28 118h12M34 112v12",
+          stroke: "#FFFFFF",
+          strokeWidth: "2",
+          strokeLinecap: "round",
+        }),
+      ],
+    });
+  }
+  if (num === "04") {
+    return m.jsxs("svg", {
+      className: "service-card-art",
+      viewBox: "0 0 160 160",
+      fill: "none",
+      "aria-hidden": "true",
+      children: [
+        m.jsxs("defs", {
+          children: [
+            m.jsxs("linearGradient", {
+              id: "sc-ux-grad",
+              x1: "0",
+              y1: "0",
+              x2: "160",
+              y2: "160",
+              gradientUnits: "userSpaceOnUse",
+              children: [
+                m.jsx("stop", { offset: "0%", stopColor: "#27272A" }),
+                m.jsx("stop", { offset: "100%", stopColor: "#09090B" }),
+              ],
+            }),
+            m.jsx("filter", {
+              id: "sc-ux-shadow",
+              x: "0",
+              y: "0",
+              width: "160",
+              height: "160",
+              filterUnits: "userSpaceOnUse",
+              children: m.jsx("feDropShadow", {
+                dx: "2",
+                dy: "8",
+                stdDeviation: "6",
+                floodOpacity: "0.2",
+              }),
+            }),
+          ],
+        }),
+        m.jsxs("g", {
+          filter: "url(#sc-ux-shadow)",
+          children: [
+            m.jsx("rect", {
+              x: "28",
+              y: "24",
+              width: "108",
+              height: "114",
+              rx: "14",
+              fill: "url(#sc-ux-grad)",
+            }),
+            m.jsx("rect", {
+              x: "38",
+              y: "34",
+              width: "88",
+              height: "94",
+              rx: "8",
+              fill: "#18181B",
+            }),
+            m.jsx("circle", { cx: "50", cy: "46", r: "1.5", fill: "#3F3F46" }),
+            m.jsx("circle", { cx: "65", cy: "46", r: "1.5", fill: "#3F3F46" }),
+            m.jsx("circle", { cx: "80", cy: "46", r: "1.5", fill: "#3F3F46" }),
+            m.jsx("circle", { cx: "95", cy: "46", r: "1.5", fill: "#3F3F46" }),
+            m.jsx("circle", { cx: "110", cy: "46", r: "1.5", fill: "#3F3F46" }),
+            m.jsx("path", {
+              d: "M48 94C62 60 88 110 112 70",
+              stroke: "#71717A",
+              strokeWidth: "2.5",
+              strokeLinecap: "round",
+            }),
+            m.jsx("circle", { cx: "48", cy: "94", r: "4", fill: "#FFFFFF" }),
+            m.jsx("circle", { cx: "80", cy: "85", r: "4", fill: "#FFFFFF" }),
+            m.jsx("circle", { cx: "112", cy: "70", r: "4", fill: "#FFFFFF" }),
+            m.jsx("path", {
+              d: "M78 86l18 16-7 3 5 12-5 2-5-12-6 5V86z",
+              fill: "#FFFFFF",
+              stroke: "#09090B",
+              strokeWidth: "1.5",
+              filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.4))",
+            }),
+          ],
+        }),
+      ],
+    });
+  }
+  if (num === "05") {
+    return m.jsxs("svg", {
+      className: "service-card-art",
+      viewBox: "0 0 160 160",
+      fill: "none",
+      "aria-hidden": "true",
+      children: [
+        m.jsxs("defs", {
+          children: [
+            m.jsxs("linearGradient", {
+              id: "sc-d-cyl",
+              x1: "0",
+              y1: "0",
+              x2: "100",
+              y2: "100",
+              gradientUnits: "userSpaceOnUse",
+              children: [
+                m.jsx("stop", { offset: "0%", stopColor: "#27272A" }),
+                m.jsx("stop", { offset: "100%", stopColor: "#09090B" }),
+              ],
+            }),
+            m.jsx("filter", {
+              id: "sc-d-shadow",
+              x: "0",
+              y: "0",
+              width: "160",
+              height: "160",
+              filterUnits: "userSpaceOnUse",
+              children: m.jsx("feDropShadow", {
+                dx: "2",
+                dy: "8",
+                stdDeviation: "6",
+                floodOpacity: "0.2",
+              }),
+            }),
+          ],
+        }),
+        m.jsxs("g", {
+          filter: "url(#sc-d-shadow)",
+          transform: "translate(15, 10)",
+          children: [
+            m.jsx("path", {
+              d: "M25 85 C25 76 85 76 85 85 L85 105 C85 114 25 114 25 105 Z",
+              fill: "url(#sc-d-cyl)",
+            }),
+            m.jsx("ellipse", {
+              cx: "55",
+              cy: "85",
+              rx: "30",
+              ry: "9",
+              fill: "#3F3F46",
+            }),
+            m.jsx("path", {
+              d: "M25 58 C25 49 85 49 85 58 L85 78 C85 87 25 87 25 78 Z",
+              fill: "url(#sc-d-cyl)",
+            }),
+            m.jsx("ellipse", {
+              cx: "55",
+              cy: "58",
+              rx: "30",
+              ry: "9",
+              fill: "#3F3F46",
+            }),
+            m.jsx("path", {
+              d: "M25 31 C25 22 85 22 85 31 L85 51 C85 60 25 60 25 51 Z",
+              fill: "url(#sc-d-cyl)",
+            }),
+            m.jsx("ellipse", {
+              cx: "55",
+              cy: "31",
+              rx: "30",
+              ry: "9",
+              fill: "#52525B",
+            }),
+            m.jsx("circle", { cx: "70", cy: "41", r: "2.5", fill: "#10B981" }),
+            m.jsx("circle", { cx: "70", cy: "68", r: "2.5", fill: "#10B981" }),
+            m.jsx("circle", { cx: "70", cy: "95", r: "2.5", fill: "#10B981" }),
+            m.jsx("path", {
+              d: "M72 65s16-8 16-20V33l-16-6-16 6v12c0 12 16 20 16 20z",
+              fill: "#FFFFFF",
+              stroke: "#09090B",
+              strokeWidth: "2",
+            }),
+            m.jsx("path", {
+              d: "M67 45l4 4 8-8",
+              stroke: "#09090B",
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+            }),
+          ],
+        }),
+      ],
+    });
+  }
+  return m.jsxs("svg", {
+    className: "service-card-art",
+    viewBox: "0 0 160 160",
+    fill: "none",
+    "aria-hidden": "true",
+    children: [
+      m.jsxs("defs", {
+        children: [
+          m.jsxs("linearGradient", {
+            id: "sc-c-grad",
+            x1: "0",
+            y1: "0",
+            x2: "160",
+            y2: "160",
+            gradientUnits: "userSpaceOnUse",
+            children: [
+              m.jsx("stop", { offset: "0%", stopColor: "#FFFFFF" }),
+              m.jsx("stop", { offset: "100%", stopColor: "#A1A1AA" }),
+            ],
+          }),
+          m.jsx("filter", {
+            id: "sc-c-shadow",
+            x: "0",
+            y: "0",
+            width: "160",
+            height: "160",
+            filterUnits: "userSpaceOnUse",
+            children: m.jsx("feDropShadow", {
+              dx: "2",
+              dy: "8",
+              stdDeviation: "6",
+              floodOpacity: "0.4",
+            }),
+          }),
+        ],
+      }),
+      m.jsxs("g", {
+        filter: "url(#sc-c-shadow)",
+        transform: "translate(10, 10)",
+        children: [
+          m.jsx("path", {
+            d: "M70 122s42-22 42-56V30l-42-16-42 16v36c0 34 42 56 42 56z",
+            fill: "url(#sc-c-grad)",
+          }),
+          m.jsx("path", {
+            d: "M70 110s32-17 32-44V38l-32-12-32 12v28c0 27 32 44 32 44z",
+            fill: "#0D0E12",
+          }),
+          m.jsx("path", {
+            d: "M48 68h12l5-12 8 24 7-16 4 4h10",
+            stroke: "#FFFFFF",
+            strokeWidth: "2.5",
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+          }),
+          m.jsx("circle", { cx: "70", cy: "68", r: "3", fill: "#10B981" }),
+        ],
+      }),
+    ],
+  });
+}
+
+function ServicesCapabilities() {
+  const capabilities = [
+    {
+      num: "01",
+      tag: "WEB SOFTWARE",
+      title: "Custom Web Portals & Business Software",
+      desc: "Tailored customer platforms, staff management dashboards, and booking portals designed to automate daily operations, run fast on every device, and handle heavy traffic reliably.",
+      chips: ["Client Portals", "Staff Dashboards", "Automated Forms"],
+      variant: "service-card--white",
+    },
+    {
+      num: "02",
+      tag: "MOBILE APPS",
+      title: "Smartphone Apps for iOS & Android",
+      desc: "Put your business directly in your customers' hands. We build fast, intuitive iPhone and Android apps that work smoothly even with spotty internet and are published to app stores.",
+      chips: ["iPhone & Android", "Offline Support", "Push Alerts"],
+      variant: "service-card--gray",
+    },
+    {
+      num: "03",
+      tag: "INTEGRATIONS",
+      title: "Payment Systems & Connected Services",
+      desc: "Connect your website directly to GCash, Maya, cards, delivery couriers, and inventory tools so orders and payments sync automatically without manual bookkeeping.",
+      chips: ["GCash & Maya", "Card Payments", "Courier Tracking"],
+      variant: "service-card--black",
+    },
+    {
+      num: "04",
+      tag: "USER EXPERIENCE",
+      title: "Intuitive Design & Clickable Prototypes",
+      desc: "Before writing any software, we create interactive previews of every screen so you can click through, test, and approve the look and customer flow with zero surprises.",
+      chips: ["Clickable Previews", "Customer Testing", "Simple Flows"],
+      variant: "service-card--white",
+    },
+    {
+      num: "05",
+      tag: "DATA & SPEED",
+      title: "Secure Customer Data & Instant Load Speeds",
+      desc: "We protect your critical business records, orders, and customer accounts with encrypted storage and automated backups, while keeping your website pages loading in milliseconds.",
+      chips: ["Fast Page Speed", "Encrypted Records", "Daily Backups"],
+      variant: "service-card--gray",
+    },
+    {
+      num: "06",
+      tag: "CARE & SUPPORT",
+      title: "Continuous Protection & Ongoing Maintenance",
+      desc: "Your software stays secure and updated long after launch. We monitor uptime 24/7, guard against cyber threats, fix bugs immediately, and help you roll out new improvements.",
+      chips: ["24/7 Monitoring", "Threat Defense", "Fast Bug Fixes"],
+      variant: "service-card--black",
+    },
+  ];
+
+  return m.jsx("section", {
+    className: "py-16 lg:py-25 bg-[#FBFBFB]",
+    children: m.jsxs("div", {
+      className: "max-w-7xl mx-auto px-6",
+      children: [
+        m.jsxs("div", {
+          className: "max-w-3xl mb-14 text-left capabilities-intro",
+          children: [
+            m.jsx("p", {
+              className:
+                "text-xs font-mono uppercase tracking-[0.25em] text-black/50 mb-3",
+              children: "What We Deliver",
+            }),
+            m.jsxs("h2", {
+              className:
+                "text-4xl sm:text-5xl font-normal text-black -tracking-[1.92px] mb-6 leading-tight",
+              children: [
+                "Full-Cycle ",
+                m.jsx("span", {
+                  className: "italic font-serif",
+                  children: "Engineering Capabilities",
+                }),
+              ],
+            }),
+            m.jsx("p", {
+              className: "text-gray-700 text-lg leading-relaxed",
+              children:
+                "From your initial product concept to high-volume daily operations, we handle the technical execution so you can run your business with dependable software that simply works.",
+            }),
+          ],
+        }),
+        m.jsx("div", {
+          className: "service-card-grid",
+          children: capabilities.map((c) =>
+            m.jsxs(
+              "article",
+              {
+                className: `service-card ${c.variant}`,
+                children: [
+                  m.jsxs("div", {
+                    className: "service-card-content",
+                    children: [
+                      m.jsx("h3", {
+                        className: "service-card-title",
+                        children: c.title,
+                      }),
+                      m.jsx("p", {
+                        className: "service-card-desc",
+                        children: c.desc,
+                      }),
+                      m.jsx("div", {
+                        className: "service-card-chips",
+                        children: c.chips.map((chip, idx) =>
+                          m.jsx(
+                            "span",
+                            {
+                              className: "service-chip",
+                              children: chip,
+                            },
+                            idx,
+                          ),
+                        ),
+                      }),
+                    ],
+                  }),
+                  renderCapabilityArt(c.num),
+                ],
+              },
+              c.num,
+            ),
+          ),
+        }),
+      ],
+    }),
+  });
+}
+function ServicesProcess() {
+  const steps = [
+    {
+      step: "01",
+      title: "Discovery & Architecture",
+      desc: "Free discovery consultation to map user journeys, technical scope, database models, and transparent milestone breakdown.",
+    },
+    {
+      step: "02",
+      title: "UI/UX & Prototyping",
+      desc: "Interactive Figma wireframes, design tokens, and clickable prototypes ensuring full stakeholder signoff before coding begins.",
+    },
+    {
+      step: "03",
+      title: "Agile Milestone Sprints",
+      desc: "Two-week agile sprints with continuous automated testing, private staging preview URLs, and direct developer communication.",
+    },
+    {
+      step: "04",
+      title: "Cloud Launch & Handover",
+      desc: "Security auditing, zero-downtime production deployment, 100% full source code and IP transfer, plus documented handover.",
+    },
+  ];
+
+  return m.jsx("section", {
+    className: "bg-black py-20 rounded-4xl",
+    children: m.jsxs("div", {
+      className: "max-w-7xl mx-auto px-6",
+      children: [
+        m.jsxs("div", {
+          className: "max-w-3xl mb-14 text-left",
+          children: [
+            m.jsx("p", {
+              className:
+                "text-xs font-mono uppercase tracking-[0.25em] text-gray-400 mb-3",
+              children: "Our Agile Process",
+            }),
+            m.jsxs("h2", {
+              className:
+                "text-white text-4xl sm:text-5xl font-normal leading-tight mb-6",
+              children: [
+                "How We Deliver, ",
+                m.jsx("br", {}),
+                m.jsx("span", {
+                  className: "italic font-serif",
+                  children: "In 4 Disciplined Stages.",
+                }),
+              ],
+            }),
+            m.jsx("p", {
+              className: "text-white/60 text-base sm:text-lg leading-relaxed",
+              children:
+                "A milestone-driven production framework built for speed and engineering rigor. You retain complete visibility into every commit and deliverable from day one.",
+            }),
+          ],
+        }),
+        m.jsx("div", {
+          className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6",
+          children: steps.map((s) =>
+            m.jsxs(
+              "div",
+              {
+                className:
+                  "p-6 rounded-2xl border border-white/10 bg-neutral-950/60 hover:border-white/20 transition-all duration-300 flex flex-col justify-between",
+                children: [
+                  m.jsxs("div", {
+                    className: "flex items-center justify-between mb-4",
+                    children: [
+                      m.jsx("span", {
+                        className:
+                          "text-xs font-mono text-emerald-400 tracking-widest",
+                        children: `STAGE ${s.step}`,
+                      }),
+                      m.jsx("span", {
+                        className: "w-2 h-2 rounded-full bg-emerald-400",
+                      }),
+                    ],
+                  }),
+                  m.jsx("h3", {
+                    className: "text-white text-lg font-medium mb-3",
+                    children: s.title,
+                  }),
+                  m.jsx("p", {
+                    className: "text-white/60 text-sm leading-relaxed",
+                    children: s.desc,
+                  }),
+                ],
+              },
+              s.step,
+            ),
+          ),
+        }),
+      ],
+    }),
+  });
+}
 function p9() {
-  const [t, i] = E.useState(null);
   return m.jsxs(m.Fragment, {
     children: [
       m.jsx(f9, {}),
       m.jsx(md, {}),
+      m.jsx(ServicesCapabilities, {}),
+      m.jsx(ServicesProcess, {}),
       m.jsx(Rv, {}),
-      m.jsx(pd, {}),
-      m.jsx(Lv, {}),
       m.jsx(h9, {}),
     ],
   });
@@ -27366,19 +28308,11 @@ const g9 = () => [
   },
   {
     id: 2,
-    title: "QuickNote",
-    type: "PRODUCTIVITY & SECOND BRAIN SAAS",
+    title: "Syrupynut",
+    type: "CREATIVE PORTFOLIO & COMMISSIONS",
     date: "2026",
-    image: "assets/images/project/quicknote.jpg",
-    url: "https://quicknote.ct.ws/?i=2",
-  },
-  {
-    id: 3,
-    title: "BeCoffee",
-    type: "SPECIALTY COFFEE & ROASTERY",
-    date: "2026",
-    image: "assets/images/project/becoffee.jpg",
-    url: "https://becoffee-cafe.web.app/",
+    image: "assets/images/project/syrupynut.jpg",
+    url: "https://syrupynut.pages.dev/",
   },
 ];
 function y9() {
@@ -27450,6 +28384,9 @@ function y9() {
           m.jsx("div", {
             children: m.jsxs(Se, {
               to: "/portfolio",
+              onClick: () => {
+                window.forceScrollToTop && window.forceScrollToTop(true);
+              },
               className:
                 "group px-6 py-4.5 inline-flex gap-2 items-center bg-white text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300",
               children: [
@@ -27612,6 +28549,9 @@ function Pi() {
             className: "sm:w-1/2 flex sm:justify-end",
             children: m.jsx(Se, {
               to: "/contact",
+              onClick: () => {
+                window.forceScrollToTop && window.forceScrollToTop(true);
+              },
               className:
                 "group px-6 py-4.5 inline-flex gap-2 items-center bg-white border border-black text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300",
               children: m.jsx(ft, { children: "CONTACT US" }),
@@ -27719,7 +28659,7 @@ function w9() {
       m.jsx(S9, {}),
       m.jsx(Re, { width: "100%", children: m.jsx(T9, {}) }),
       m.jsx(Re, { width: "100%", children: m.jsx(md, {}) }),
-      m.jsx(Re, { width: "100%", children: m.jsx(pd, {}) }),
+      m.jsx(Re, { width: "100%", children: m.jsx(AboutPrinciples, {}) }),
       m.jsx(Re, { width: "100%", children: m.jsx(Lv, {}) }),
       m.jsx(Re, { width: "100%", children: m.jsx(Pi, {}) }),
     ],
@@ -29444,6 +30384,7 @@ const z9 = [
   "SaaS Platforms",
   "E-Commerce",
   "Healthcare & Hospitality",
+  "Creative & Media",
 ];
 const _9 = () => [
   {
@@ -29470,6 +30411,33 @@ const _9 = () => [
   },
   {
     id: 3,
+    title: "A.N.A",
+    type: "DIGITAL ART & EXHIBITION GALLERY",
+    date: "2026",
+    image: "assets/images/project/ana.jpg",
+    category: "Creative & Media",
+    categories: ["All Projects", "Web Apps", "Creative & Media"],
+    url: "https://ana-seven-silk.vercel.app/",
+    desc: "Interactive digital art gallery and exhibition web application developed with Next.js, featuring real-time WebGL canvas and curated artist manifestos.",
+  },
+  {
+    id: 4,
+    title: "Syrupynut",
+    type: "CREATIVE PORTFOLIO & COMMISSIONS",
+    date: "2026",
+    image: "assets/images/project/syrupynut.jpg",
+    category: "Creative & Media",
+    categories: [
+      "All Projects",
+      "Web Apps",
+      "Creative & Media",
+      "E-Commerce",
+    ],
+    url: "https://syrupynut.pages.dev/",
+    desc: "Digital illustration commission hub and artist portfolio featuring tiered service pricing, interactive guidelines, and direct booking integrations.",
+  },
+  {
+    id: 5,
     title: "BeCoffee",
     type: "SPECIALTY COFFEE & ROASTERY",
     date: "2026",
@@ -29485,7 +30453,7 @@ const _9 = () => [
     desc: "Digital storefront and cafe experience for an artisanal Philippine coffee roastery featuring online orders and specialty roast discovery.",
   },
   {
-    id: 4,
+    id: 6,
     title: "Serene Smile Dental Clinic",
     type: "HEALTHCARE & CLINIC APP",
     date: "2026",
@@ -29496,7 +30464,7 @@ const _9 = () => [
     desc: "Modern dental clinic web application featuring Swiss EMS Airflow treatment bookings, doctor scheduling, and patient portal.",
   },
   {
-    id: 5,
+    id: 7,
     title: "More Projects to Come",
     type: "ACTIVE SPRINT • 2026",
     date: "IN PROGRESS",
@@ -29507,6 +30475,7 @@ const _9 = () => [
       "SaaS Platforms",
       "E-Commerce",
       "Healthcare & Hospitality",
+      "Creative & Media",
     ],
     isUpcoming: !0,
     url: "contact.html",
@@ -29861,6 +30830,22 @@ function U9() {
         },
         {
           id: 3,
+          title: "A.N.A",
+          type: "DIGITAL ART & EXHIBITION GALLERY",
+          date: "2026",
+          image: "assets/images/project/ana.jpg",
+          url: "https://ana-seven-silk.vercel.app/",
+        },
+        {
+          id: 4,
+          title: "Syrupynut",
+          type: "CREATIVE PORTFOLIO & COMMISSIONS",
+          date: "2026",
+          image: "assets/images/project/syrupynut.jpg",
+          url: "https://syrupynut.pages.dev/",
+        },
+        {
+          id: 5,
           title: "BeCoffee",
           type: "SPECIALTY COFFEE & ROASTERY",
           date: "2026",
@@ -29868,7 +30853,7 @@ function U9() {
           url: "https://becoffee-cafe.web.app/",
         },
         {
-          id: 4,
+          id: 6,
           title: "Serene Smile Dental Clinic",
           type: "HEALTHCARE & CLINIC APP",
           date: "2026",
@@ -30364,11 +31349,47 @@ function G9() {
   });
 }
 function P9() {
-  const { pathname: t } = hi();
+  const { pathname: t, search: s, hash: h } = hi();
   return (
-    E.useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [t]),
+    E.useLayoutEffect(() => {
+      if (typeof history !== "undefined" && "scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+      if (h) {
+        const el = document.querySelector(h);
+        if (el) {
+          el.scrollIntoView();
+          return;
+        }
+      }
+      window._suppressScrollRestore = true;
+      const reset = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        if (window.lenis) {
+          window.lenis.scrollTo(0, { immediate: true });
+        }
+      };
+      reset();
+      const r1 = requestAnimationFrame(reset);
+      const r2 = requestAnimationFrame(() => requestAnimationFrame(reset));
+      const t1 = setTimeout(reset, 50);
+      const t2 = setTimeout(reset, 150);
+      const t3 = setTimeout(reset, 300);
+      const t4 = setTimeout(() => {
+        reset();
+        window._suppressScrollRestore = false;
+      }, 500);
+      return () => {
+        cancelAnimationFrame(r1);
+        cancelAnimationFrame(r2);
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+        clearTimeout(t4);
+      };
+    }, [t, s, h]),
     null
   );
 }

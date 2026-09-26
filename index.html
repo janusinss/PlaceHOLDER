@@ -4,6 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
     const p = window.location.pathname;
     const isLocalSubdir = p.includes('/YEAR%204/COMPANY%20WEBSITE') || p.includes('/YEAR 4/COMPANY WEBSITE');
     document.write('<base href="' + (isLocalSubdir ? '/YEAR%204/COMPANY%20WEBSITE/' : '/') + '">');
@@ -251,8 +257,8 @@
                     <div class="flex py-6 text-white text-base justify-between font-mono"><span>E-COMMERCE &amp; GROCERY</span><span>2026</span></div><a class="block overflow-hidden rounded-2xl" href="https://freshcart.ct.ws/" target="_blank" rel="noopener noreferrer" data-discover="true"><img class="w-full" alt="FreshCart" src="assets/images/project/freshcart.jpg" style="transform: none;"></a>
                   </article>
                   <article class="p-6 rounded-[20px] border border-[#1F1F1F] bg-neutral-950">
-                    <h3 class="text-lg text-white -leading-[0.2px]"><a class="hover:text-gray-300" href="https://becoffee-cafe.web.app/" target="_blank" rel="noopener noreferrer" data-discover="true">BeCoffee</a></h3>
-                    <div class="flex py-6 text-white text-base justify-between font-mono"><span>SPECIALTY COFFEE &amp; ROASTERY</span><span>2026</span></div><a class="block overflow-hidden rounded-2xl" href="https://becoffee-cafe.web.app/" target="_blank" rel="noopener noreferrer" data-discover="true"><img class="w-full" alt="BeCoffee" src="assets/images/project/becoffee.jpg" style="transform: none;"></a>
+                    <h3 class="text-lg text-white -leading-[0.2px]"><a class="hover:text-gray-300" href="https://syrupynut.pages.dev/" target="_blank" rel="noopener noreferrer" data-discover="true">Syrupynut</a></h3>
+                    <div class="flex py-6 text-white text-base justify-between font-mono"><span>CREATIVE PORTFOLIO &amp; COMMISSIONS</span><span>2026</span></div><a class="block overflow-hidden rounded-2xl" href="https://syrupynut.pages.dev/" target="_blank" rel="noopener noreferrer" data-discover="true"><img class="w-full" alt="Syrupynut" src="assets/images/project/syrupynut.jpg" style="transform: none;"></a>
                   </article>
                 </div>
                 <div><a class="group px-6 py-4.5 inline-flex gap-2 items-center bg-white text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300" href="portfolio.html" data-discover="true"><span class="relative inline-block overflow-hidden "><span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">EXPLORE ALL PROJECTS</span><span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">EXPLORE ALL PROJECTS</span></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-hover:translate-x-1">
@@ -307,6 +313,8 @@
               <ul class="space-y-4 text-white [&amp;&gt;li&gt;a]:text-base [&amp;&gt;li&gt;a]:leading-6 [&amp;&gt;li&gt;a]:opacity-80 [&amp;&gt;li&gt;a]:hover:opacity-100 [&amp;&gt;li&gt;a]:transition-opacity [&amp;&gt;li&gt;a]:duration-300">
                 <li><a href="https://freshcart.ct.ws/" target="_blank" rel="noopener noreferrer">FreshCart E-Commerce</a></li>
                 <li><a href="https://quicknote.ct.ws/?i=2" target="_blank" rel="noopener noreferrer">QuickNote Productivity</a></li>
+                <li><a href="https://ana-seven-silk.vercel.app/" target="_blank" rel="noopener noreferrer">A.N.A Digital Gallery</a></li>
+                <li><a href="https://syrupynut.pages.dev/" target="_blank" rel="noopener noreferrer">Syrupynut Commission Hub</a></li>
                 <li><a href="https://becoffee-cafe.web.app/" target="_blank" rel="noopener noreferrer">BeCoffee Roastery</a></li>
                 <li><a href="https://serene-smile.netlify.app/" target="_blank" rel="noopener noreferrer">Serene Smile Clinic</a></li>
                 <li><a href="portfolio.html">All Case Studies &rarr;</a></li>

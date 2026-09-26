@@ -4,6 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
     const p = window.location.pathname;
     const isLocalSubdir = p.includes('/YEAR%204/COMPANY%20WEBSITE') || p.includes('/YEAR 4/COMPANY WEBSITE');
     document.write('<base href="' + (isLocalSubdir ? '/YEAR%204/COMPANY%20WEBSITE/' : '/') + '">');
@@ -117,36 +123,39 @@
         </div>
       </div>
       <div style="position: relative; width: 100%; overflow: hidden;">
-        <div style="opacity: 0; transform: translateY(75px);">
-          <section class="bg-black py-20">
+        <div style="opacity: 1; transform: none;">
+          <section class="bg-black py-20 rounded-4xl">
             <div class="max-w-7xl mx-auto px-6">
-              <div class="flex flex-col lg:flex-row lg:items-center gap-10 lg:gap-16">
-                <div class="sm:mb-12 mb-8 lg:mb-0 lg:w-5/12 pr-0 lg:pr-4">
-                  <p class="text-xs font-mono uppercase tracking-[0.25em] text-gray-400 mb-4">Our Story &amp; Origins</p>
-                  <h2 class="text-white text-4xl sm:text-5xl font-normal leading-tight">Started in Zamboanga, <br><span class="italic font-serif">Building to Grow Big.</span></h2>
-                  <p class="text-white/60 text-base sm:text-lg mt-6 leading-relaxed">PlaceHOLDER was founded by college tech students in Zamboanga City with a shared drive: turning classroom concepts and late-night coding sessions into real, production-ready software. What began between university lectures is now a dedicated studio shipping live digital products and scaling into a major technology firm.</p>
+              <div class="flex flex-col lg:flex-row lg:items-start gap-12 lg:gap-16">
+                <div class="lg:w-5/12 pr-0 lg:pr-4">
+                  <p class="text-xs font-mono uppercase tracking-[0.25em] text-gray-400 mb-4">Our Philosophy &amp; Standard</p>
+                  <h2 class="text-white text-4xl sm:text-5xl font-normal leading-tight">Crafting Clean Code, <br><span class="italic font-serif">Engineered Without Shortcuts.</span></h2>
+                  <p class="text-white/60 text-base sm:text-lg mt-6 leading-relaxed">We founded PlaceHOLDER in university computer labs with a clear realization: modern companies don't need agency overhead or sluggish junior handoffs. They need hungry, detail-obsessed engineers who ship production-grade digital software on tight milestone sprints.</p>
+                  <div class="mt-8 inline-flex items-center gap-3 px-4 py-2.5 rounded-full border border-white/10 bg-white/5 text-xs font-mono text-gray-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    5 Core Specialists • 100% In-House Code • Zero Outsourcing
+                  </div>
                 </div>
-                <div class="lg:w-7/12 origin-timeline">
-                  <div class="origin-timeline-row">
-                    <div class="origin-timeline-tag">Campus Roots</div>
-                    <div class="flex-1">
-                      <h3 class="text-white text-xl font-medium tracking-tight mb-2">Late Nights &amp; Shared Labs</h3>
-                      <p class="text-white/60 text-sm leading-relaxed">Started by university classmates testing modern web frameworks, sharing dual monitors, and building passion projects after lectures.</p>
-                    </div>
+                <div class="lg:w-7/12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="p-6 rounded-2xl flex flex-col justify-between border border-white/10 bg-neutral-950/60 hover:border-white/20 transition-all duration-300">
+                    <span class="text-xs font-mono text-emerald-400 mb-3 tracking-widest">01</span>
+                    <h3 class="text-white text-lg font-medium mb-2">Direct Lead Engineering</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">Every line of code and architectural decision is authored directly by our founding engineers. No junior handoffs, no middle-management layers.</p>
                   </div>
-                  <div class="origin-timeline-row">
-                    <div class="origin-timeline-tag">First Builds</div>
-                    <div class="flex-1">
-                      <h3 class="text-white text-xl font-medium tracking-tight mb-2">Shipping Live Client Systems</h3>
-                      <p class="text-white/60 text-sm leading-relaxed">Taking the leap from student concepts to production code—deploying live web apps for cafes, clinic booking systems, and digital stores.</p>
-                    </div>
+                  <div class="p-6 rounded-2xl flex flex-col justify-between border border-white/10 bg-neutral-950/60 hover:border-white/20 transition-all duration-300">
+                    <span class="text-xs font-mono text-emerald-400 mb-3 tracking-widest">02</span>
+                    <h3 class="text-white text-lg font-medium mb-2">Zero Bloat Architecture</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">We build modular, maintainable software using React, TypeScript, and Python designed for sub-second load times and zero hidden technical debt.</p>
                   </div>
-                  <div class="origin-timeline-row">
-                    <div class="origin-timeline-tag">Next Horizon</div>
-                    <div class="flex-1">
-                      <h3 class="text-white text-xl font-medium tracking-tight mb-2">Scaling Toward Bigger Goals</h3>
-                      <p class="text-white/60 text-sm leading-relaxed">Onboarding larger businesses and proving that world-class software engineering and modern design can thrive right from Zamboanga City.</p>
-                    </div>
+                  <div class="p-6 rounded-2xl flex flex-col justify-between border border-white/10 bg-neutral-950/60 hover:border-white/20 transition-all duration-300">
+                    <span class="text-xs font-mono text-emerald-400 mb-3 tracking-widest">03</span>
+                    <h3 class="text-white text-lg font-medium mb-2">Radical Sprint Visibility</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">Weekly staging deployments, transparent Git milestone commits, and live interactive demos ensure you always see working software early.</p>
+                  </div>
+                  <div class="p-6 rounded-2xl flex flex-col justify-between border border-white/10 bg-neutral-950/60 hover:border-white/20 transition-all duration-300">
+                    <span class="text-xs font-mono text-emerald-400 mb-3 tracking-widest">04</span>
+                    <h3 class="text-white text-lg font-medium mb-2">Born in Mindanao, Built Global</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">Proving that world-class software engineering and bespoke UI craftsmanship thrive right from Zamboanga City to global production standards.</p>
                   </div>
                 </div>
               </div>
@@ -155,7 +164,7 @@
         </div>
       </div>
       <div style="position: relative; width: 100%; overflow: hidden;">
-        <div style="opacity: 0; transform: translateY(75px);">
+        <div style="opacity: 1; transform: none;">
           <section class="pt-25">
             <div class="max-w-7xl mx-auto px-6">
               <div class="mb-16">
@@ -169,7 +178,7 @@
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
                       </svg></a><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-black hover:text-gray-600 transition" aria-label="GitHub"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
-                      </svg></a></div>
+                      </svg></a><a href="https://snorlaxx-portfolio.web.app/" target="_blank" rel="noopener noreferrer" class="text-black hover:text-gray-600 transition" aria-label="Portfolio"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.5 5.25a3 3 0 013-3h3a3 3 0 013 3v.205c.933.085 1.857.197 2.774.334 1.454.218 2.476 1.483 2.476 2.917v3.033c0 1.211-.734 2.352-1.9 2.743A24.086 24.086 0 0112 15.75c-2.396 0-4.707-.24-6.85-.693-1.166-.391-1.9-1.532-1.9-2.743V8.706c0-1.434 1.022-2.7 2.476-2.917A48.814 48.814 0 017.5 5.455V5.25zm7.5 0v.09a49.488 49.488 0 00-6 0v-.09a1.5 1.5 0 011.5-1.5h3a1.5 1.5 0 011.5 1.5zm-9.75 9.774v2.976a3 3 0 002.583 2.97c2.316.32 4.683.48 7.167.48s4.851-.16 7.167-.48a3 3 0 002.583-2.97v-2.976A25.578 25.578 0 0112 17.25c-2.47 0-4.85-.227-7.25-.726z" clip-rule="evenodd"></path></svg></a></div>
                 </div>
                 <div class="mt-4">
                   <h4 class="text-lg font-medium text-black">Mhyco Giselo Bunao</h4>
@@ -243,7 +252,7 @@
         </div>
       </div>
       <div style="position: relative; width: 100%; overflow: hidden;">
-        <div style="opacity: 0; transform: translateY(75px);">
+        <div style="opacity: 1; transform: none;">
           <section class="py-14 bg-[#FBFBFB]">
             <div class="max-w-7xl mx-auto px-6">
               <div class="flex items-center flex-col sm:flex-row justify-between gap-6">
@@ -286,6 +295,8 @@
               <ul class="space-y-4 text-white [&amp;&gt;li&gt;a]:text-base [&amp;&gt;li&gt;a]:leading-6 [&amp;&gt;li&gt;a]:opacity-80 [&amp;&gt;li&gt;a]:hover:opacity-100 [&amp;&gt;li&gt;a]:transition-opacity [&amp;&gt;li&gt;a]:duration-300">
                 <li><a href="https://freshcart.ct.ws/" target="_blank" rel="noopener noreferrer">FreshCart E-Commerce</a></li>
                 <li><a href="https://quicknote.ct.ws/?i=2" target="_blank" rel="noopener noreferrer">QuickNote Productivity</a></li>
+                <li><a href="https://ana-seven-silk.vercel.app/" target="_blank" rel="noopener noreferrer">A.N.A Digital Gallery</a></li>
+                <li><a href="https://syrupynut.pages.dev/" target="_blank" rel="noopener noreferrer">Syrupynut Commission Hub</a></li>
                 <li><a href="https://becoffee-cafe.web.app/" target="_blank" rel="noopener noreferrer">BeCoffee Roastery</a></li>
                 <li><a href="https://serene-smile.netlify.app/" target="_blank" rel="noopener noreferrer">Serene Smile Clinic</a></li>
                 <li><a href="portfolio.html">All Case Studies &rarr;</a></li>
