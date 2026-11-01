@@ -26828,9 +26828,9 @@ const c9 = [
     role: "Lead Full-Stack Engineer",
     image: "assets/images/team/team-placeholder.jpg",
     socials: {
+      github: "https://github.com/Snorlaxx96",
       facebook: "https://www.facebook.com/giselo.bunao",
-      github: "https://github.com",
-      portfolio: "https://snorlaxx-portfolio.web.app/",
+      portfolio: "https://mhyco.web.app/",
     },
   },
   {
@@ -26839,8 +26839,8 @@ const c9 = [
     role: "Frontend & UI/UX Engineer",
     image: "assets/images/team/team-ace.png",
     socials: {
+      github: "https://github.com/Eiseu01",
       facebook: "https://www.facebook.com/eiseu.01",
-      github: "https://github.com",
       portfolio: "https://portfolio.ajnieva.workers.dev/",
     },
   },
@@ -26850,9 +26850,9 @@ const c9 = [
     role: "Backend & Cloud Architect",
     image: "assets/images/team/team-placeholder.jpg",
     socials: {
+      github: "https://github.com/janusinss/",
       facebook: "https://www.facebook.com/notagirlgamer69",
-      github: "https://github.com",
-      portfolio: "https://dominicfolio.pages.dev/",
+      portfolio: "https://janusfolio.pages.dev/",
     },
   },
   {
@@ -26861,9 +26861,9 @@ const c9 = [
     role: "Product & UI Designer",
     image: "assets/images/team/team-florenz.jpg",
     socials: {
+      github: "https://github.com/dalejwu",
       facebook: "https://www.facebook.com/dalejwu",
-      github: "https://github.com",
-      portfolio: "https://dalejwu.vercel.app/#",
+      portfolio: "https://dalejwu.vercel.app/",
     },
   },
   {
@@ -26872,9 +26872,9 @@ const c9 = [
     role: "Mobile & DevOps Engineer",
     image: "assets/images/team/team-placeholder.jpg",
     socials: {
+      github: "https://github.com/Ixayah14",
       facebook: "https://www.facebook.com/khalafahmadibrahim.alamadi",
-      github: "https://github.com",
-      portfolio: "#",
+      portfolio: "https://isaiah-portfolio-3f98b.web.app/",
     },
   },
   {
@@ -26883,8 +26883,8 @@ const c9 = [
     role: "Software Engineer",
     image: "assets/images/team/team-placeholder.jpg",
     socials: {
-      facebook: "https://www.facebook.com",
-      github: "https://github.com",
+      github: "https://github.com/yaaanDarunday",
+      portfolio: "https://ymdarunday.pages.dev/",
     },
   },
   {
@@ -26893,9 +26893,23 @@ const c9 = [
     role: "Software Engineer",
     image: "assets/images/team/team-clyde.png",
     socials: {
-      facebook: "https://www.facebook.com",
-      github: "https://github.com",
+      github: "https://github.com/ClydeQue",
+      portfolio: "https://www.kcque.dev/",
     },
+  },
+  {
+    id: 8,
+    name: "Gian Cody Midel Salilig",
+    role: "Developer",
+    image: "assets/images/team/team-placeholder.jpg",
+    socials: {},
+  },
+  {
+    id: 9,
+    name: "Winston T. Tabotabo",
+    role: "Developer",
+    image: "assets/images/team/team-placeholder.jpg",
+    socials: {},
   },
 ];
 function CoverflowTeamCarousel() {
@@ -27047,7 +27061,7 @@ function CoverflowTeamCarousel() {
                       alt: t.name,
                       draggable: false,
                     }),
-                    m.jsxs("div", {
+                    Object.keys(t.socials).length > 0 && m.jsxs("div", {
                       className: "flex gap-3 backdrop-blur-md bg-white/85 rounded-full justify-center py-2.5 px-5 absolute left-4 right-4 bottom-4 opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out z-20",
                       children: [
                         t.socials.facebook && m.jsx("a", {

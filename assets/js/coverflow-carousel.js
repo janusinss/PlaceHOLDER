@@ -86,7 +86,7 @@
 
       if (nameEl) nameEl.textContent = member.name;
       if (roleEl) roleEl.textContent = member.role;
-      if (socialsEl && member.socialHtml) {
+      if (socialsEl) {
         socialsEl.innerHTML = member.socialHtml;
       }
     }
