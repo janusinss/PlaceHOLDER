@@ -26829,7 +26829,6 @@ const c9 = [
     image: "assets/images/team/team-placeholder.jpg",
     socials: {
       github: "https://github.com/Snorlaxx96",
-      facebook: "https://www.facebook.com/giselo.bunao",
       portfolio: "https://mhyco.web.app/",
     },
   },
@@ -26840,7 +26839,6 @@ const c9 = [
     image: "assets/images/team/team-ace.png",
     socials: {
       github: "https://github.com/Eiseu01",
-      facebook: "https://www.facebook.com/eiseu.01",
       portfolio: "https://portfolio.ajnieva.workers.dev/",
     },
   },
@@ -26851,7 +26849,6 @@ const c9 = [
     image: "assets/images/team/team-placeholder.jpg",
     socials: {
       github: "https://github.com/janusinss/",
-      facebook: "https://www.facebook.com/notagirlgamer69",
       portfolio: "https://janusfolio.pages.dev/",
     },
   },
@@ -26862,7 +26859,6 @@ const c9 = [
     image: "assets/images/team/team-florenz.jpg",
     socials: {
       github: "https://github.com/dalejwu",
-      facebook: "https://www.facebook.com/dalejwu",
       portfolio: "https://dalejwu.vercel.app/",
     },
   },
@@ -26873,7 +26869,6 @@ const c9 = [
     image: "assets/images/team/team-placeholder.jpg",
     socials: {
       github: "https://github.com/Ixayah14",
-      facebook: "https://www.facebook.com/khalafahmadibrahim.alamadi",
       portfolio: "https://isaiah-portfolio-3f98b.web.app/",
     },
   },
@@ -27064,19 +27059,6 @@ function CoverflowTeamCarousel() {
                     idx === activeIdx && Object.keys(t.socials).length > 0 && m.jsxs("div", {
                       className: "cf-socials",
                       children: [
-                        t.socials.facebook && m.jsx("a", {
-                          href: t.socials.facebook,
-                          target: "_blank",
-                          rel: "noopener noreferrer",
-                          className: "text-black hover:text-gray-600 transition",
-                          "aria-label": "Facebook",
-                          children: m.jsx("svg", {
-                            className: "w-4 h-4",
-                            fill: "currentColor",
-                            viewBox: "0 0 24 24",
-                            children: m.jsx("path", { d: "M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" })
-                          })
-                        }),
                         t.socials.github && m.jsx("a", {
                           href: t.socials.github,
                           target: "_blank",
