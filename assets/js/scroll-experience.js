@@ -173,8 +173,12 @@
         document.body.classList.add('footer-in-view');
         header.classList.add('nav-footer-hidden');
         const vid = footer.querySelector('#footer-loop-video');
-        if (vid && vid.paused) {
-          vid.play().catch(() => {});
+        if (vid) {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            vid.pause();
+          } else if (vid.paused) {
+            vid.play().catch(() => {});
+          }
         }
       } else {
         isFooterActive = false;

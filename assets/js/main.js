@@ -14760,6 +14760,7 @@ function A0() {
                     className: "footer-media-slot",
                     children: m.jsx("video", {
                       id: "footer-loop-video",
+                      "aria-hidden": "true",
                       src: "assets/video/footer-loop.mp4",
                       playsInline: true,
                       autoPlay: true,
@@ -14771,21 +14772,21 @@ function A0() {
                   m.jsxs("ul", {
                     className: "footer-nav-col",
                     children: [
-                      m.jsx("a", {
-                        href: "portfolio.html",
-                        children: m.jsx("li", {
+                      m.jsx("li", {
+                        children: m.jsx("a", {
+                          href: "portfolio.html",
                           children: "Projects",
                         }),
                       }),
-                      m.jsx("a", {
-                        href: "about.html",
-                        children: m.jsx("li", {
+                      m.jsx("li", {
+                        children: m.jsx("a", {
+                          href: "about.html",
                           children: "About Us",
                         }),
                       }),
-                      m.jsx("a", {
-                        href: "services.html",
-                        children: m.jsx("li", {
+                      m.jsx("li", {
+                        children: m.jsx("a", {
+                          href: "services.html",
                           children: "Services",
                         }),
                       }),
@@ -21492,9 +21493,11 @@ function MS() {
       m.jsx("div", {
         className: "hero-desktop-intro",
         children: m.jsx("iframe", {
-          src: "assets/intro-morph.html",
+          src: "assets/intro-morph.html?v=a11y16",
           className: "w-full h-full border-0 overflow-hidden block",
-          title: "Scroll Morph Hero",
+          title: "MIHA Technologies intro animation",
+          "aria-hidden": "true",
+          tabIndex: -1,
         }),
       }),
       m.jsx("div", {
@@ -21511,12 +21514,11 @@ function MS() {
                 className:
                   "text-5xl lg:text-7xl font-normal -tracking-[2.88px] mb-4 text-black",
                 children: [
-                  "We Build ",
                   m.jsx("span", {
                     className: "italic",
-                    children: " Digital Products ",
+                    children: "Digital Solutions ",
                   }),
-                  " That Drive Growth.",
+                  "That Drive Business Growth.",
                 ],
               }),
               m.jsx(Ye.p, {
@@ -21526,7 +21528,7 @@ function MS() {
                 className:
                   "mb-8 lg:mb-12 text-gray-700 text-lg leading-6 -tracking-[0.2px] max-w-xl mx-auto",
                 children:
-                  "We’re Zamboanga City’s leading digital infrastructure agency. Our proven automated booking and zero-error ordering systems help local businesses cut costs and run 24/7.",
+                  "We’re a Zamboanga City-based agency that builds reliable systems to solve the problems slowing your business down, so you can spend your time growing it.",
               }),
               m.jsxs(Ye.div, {
                 initial: !1,
@@ -22051,6 +22053,9 @@ function DS() {
           m.jsxs("div", {
             className:
               "why-partner-track grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+            tabIndex: 0,
+            role: "region",
+            "aria-label": "Why partner with us",
             children: [
               m.jsxs("article", {
                 className: "why-partner-card why-partner-clone",
@@ -27310,9 +27315,9 @@ function Lv() {
 const nexServices = [
   {
     id: "qr-ordering",
-    label: "Zero-Error QR Ordering",
+    label: "QR Ordering",
     tag: "01 • DIGITAL BOOKING & QR ORDERING",
-    header: "Digital Booking & Zero-Error Ordering",
+    header: "Digital Booking & QR Ordering",
     description:
       "Eliminate long lines, missed phone calls, and staff mistakes. We build 24/7 automated booking hubs and contactless QR menus with a Staff Accountability Lock. This digital checklist requires employees to confirm order details before sending tickets to preparation. You take orders automatically, bypass 20% to 30% delivery app fees, and protect your ratings.",
     image:
@@ -27586,7 +27591,7 @@ const d9 = [
       id: 1,
       question: "What exactly do you build?",
       answer:
-        "We deploy battle-tested digital infrastructure for local businesses. This includes Zero-Error QR Ordering Hubs for cafes, 24/7 Automated Booking Systems for clinics and gyms, and digital inventory dashboards for retail stores.",
+        "We deploy battle-tested digital infrastructure for local businesses. This includes QR Ordering Hubs for cafes, 24/7 Automated Booking Systems for clinics and gyms, and digital inventory dashboards for retail stores.",
     },
     {
       id: 2,
@@ -27763,7 +27768,7 @@ function Rv() {
               ],
             }),
           }),
-          m.jsx("ul", {
+          m.jsx("div", {
             className: "max-w-[1120px] mx-auto space-y-12",
             children: m9.map((t, i) =>
               m.jsx(
@@ -27771,7 +27776,7 @@ function Rv() {
                 {
                   width: "100%",
                   delay: i * 0.1,
-                  children: m.jsxs("li", {
+                  children: m.jsxs("div", {
                     className:
                       "flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8",
                     children: [
@@ -27855,7 +27860,7 @@ function AboutPrinciples() {
                 className:
                   "text-white/60 text-base sm:text-lg mt-6 leading-relaxed",
                 children:
-                  "We founded Modern Infrastructure & Hosting Architecture in university computer labs with a clear realization: modern companies don't need agency overhead or sluggish junior handoffs. They need hungry, detail-obsessed engineers who ship production-grade digital software on tight milestone sprints.",
+                  "We founded Modern Infrastructure & Hosting Architecture in university computer labs with a clear realization. Modern companies don't need agency overhead or sluggish junior handoffs. They need hungry, detail-obsessed engineers who ship production-grade digital software on tight milestone sprints.",
               }),
               m.jsxs("div", {
                 className:
@@ -27907,7 +27912,7 @@ function ServicesCapabilities() {
     {
       num: "01",
       tag: "QR ORDERING",
-      title: "Digital Booking & Zero-Error Ordering",
+      title: "Digital Booking & QR Ordering",
       desc: "Eliminate long lines, missed phone calls, and staff mistakes with 24/7 automated booking hubs and contactless QR menus featuring our Staff Accountability Lock. Bypass 20% to 30% delivery app fees and protect your ratings.",
       chips: ["Accountability Lock", "Zero App Fees", "Contactless QR"],
     },
@@ -29124,7 +29129,7 @@ const getContactServicePreset = (search) => {
   const service = (new URLSearchParams(search).get("service") || "").trim();
   const value = service.toLowerCase();
   const selected = !service ? "" :
-    value.includes("qr") ? "Zero-Error QR Hub" :
+    value.includes("qr") ? "QR Ordering Hub" :
     value.includes("book") ? "Automated Booking System" :
     value.includes("inventory") ? "Digital Inventory Catalog" :
     value.includes("sms") ? "SMS Follow-Ups & Reminders" :
@@ -29221,7 +29226,7 @@ function L9({
       s((p) => (p.includes(h) ? p.filter((v) => v !== h) : [...p, h]));
     },
     g = [
-      "Zero-Error QR Hub",
+      "QR Ordering Hub",
       "Automated Booking System",
       "Digital Inventory Catalog",
       "SMS Follow-Ups & Reminders",
@@ -30599,7 +30604,7 @@ const z9 = [
   {
     id: "systems",
     title: "Systems",
-    desc: "Web apps with a working backend: QR ordering, court bookings, inventory, checkout and cloud storage.",
+    desc: "Web apps with a working backend for QR ordering, court bookings, inventory, checkout and cloud storage.",
   },
   {
     id: "static-websites",
@@ -30612,7 +30617,7 @@ const _9 = () => [
     id: 1,
     group: "systems",
     title: "BeCoffee Roastery",
-    subtitle: "The Zero-Error QR Ordering Master Template.",
+    subtitle: "The QR Ordering Master Template.",
     type: "RESTAURANT & CAFE ORDERING",
     date: "2026",
     image: "assets/images/project/becoffee-demo-poster.jpg",
@@ -30621,51 +30626,7 @@ const _9 = () => [
       { src: "assets/images/project/becoffee-demo.webm", type: "video/webm" },
     ],
     url: "https://ordering-demo.mihatechnologies.com/",
-    desc: "The exact architecture used to eliminate staff errors. Features direct-to-kitchen QR ordering and our proprietary Staff Accountability Lock. Ready to deploy for your restaurant to bypass 30% delivery app commissions.",
-  },
-  {
-    id: 2,
-    group: "static-websites",
-    title: "Serene Smile Clinic",
-    subtitle: "The Fast-Loading Static Website Master Template.",
-    type: "CLINIC & SERVICE BOOKINGS",
-    date: "2026",
-    image: "assets/images/project/serene-smile.jpg",
-    url: "https://serene-smile.netlify.app/",
-    desc: "A clean, reliable static website with no database to maintain and no monthly server headaches. Clear services, doctor profiles, and contact details that load instantly on any phone. Engineered to be cloned for local clinics, salons, and gyms.",
-  },
-  {
-    id: 3,
-    group: "systems",
-    title: "FreshCart E-Commerce",
-    subtitle: "The Digital Retail & Inventory Master Template.",
-    type: "RETAIL & INVENTORY",
-    date: "2026",
-    image: "assets/images/project/freshcart-demo-poster.jpg",
-    url: "https://grocery-demo.mihatechnologies.com/",
-    desc: "Originally deployed for high-volume grocers. This template features a live digital catalog, automated stock tracking, and integrated checkout. Ready to be cloned and localized for Zamboanga hardware stores, pharmacies, and retail hubs in 48 hours.",
-  },
-  {
-    id: 4,
-    group: "systems",
-    title: "QuickNote",
-    subtitle: "The Second Brain SaaS Master Template.",
-    type: "PRODUCTIVITY & SECOND BRAIN SAAS",
-    date: "2026",
-    image: "assets/images/project/quicknote.jpg",
-    url: "https://quicknote.ct.ws/?i=2",
-    desc: "The second brain for creators and developers featuring instant auto-save, smart tagging, rich media cloud storage, and interactive WebGL canvas.",
-  },
-  {
-    id: 5,
-    group: "static-websites",
-    title: "A.N.A",
-    subtitle: "The Interactive Digital Gallery Master Template.",
-    type: "DIGITAL ART & EXHIBITION GALLERY",
-    date: "2026",
-    image: "assets/images/project/ana.jpg",
-    url: "https://ana-seven-silk.vercel.app/",
-    desc: "Interactive digital art gallery and exhibition web application developed with Next.js, featuring real-time WebGL canvas and curated artist manifestos.",
+    desc: "Wrong orders cost you twice, once in wasted food and again in a bad review. Guests scan a QR code and their order goes straight to the kitchen, and our Staff Accountability Lock makes staff confirm each ticket before it's sent. Why keep paying delivery apps 30% of orders you could take yourself?",
   },
   {
     id: 9,
@@ -30676,7 +30637,51 @@ const _9 = () => [
     date: "2026",
     image: "assets/images/project/ember.jpg",
     url: "https://clothing-static.mihatechnologies.com/",
-    desc: "A scroll-driven launch page for a limited clothing drop. Pinned product animations, a five-piece lookbook, and loud type that load fast on any phone. Ready to be cloned for local apparel brands and streetwear drops.",
+    desc: "Hype doesn't wait for a slow page. EMBER is a scroll-driven launch page for a limited clothing drop, with pinned product animations, a five-piece lookbook and loud type that still loads fast on any phone. Made to be cloned for local apparel brands and streetwear drops. Does your next drop have a page that matches the hype?",
+  },
+  {
+    id: 3,
+    group: "systems",
+    title: "FreshCart E-Commerce",
+    subtitle: "The Digital Retail & Inventory Master Template.",
+    type: "RETAIL & INVENTORY",
+    date: "2026",
+    image: "assets/images/project/freshcart-demo-poster.jpg",
+    url: "https://grocery-demo.mihatechnologies.com/",
+    desc: "Customers shouldn't have to call to ask what's in stock. FreshCart started as an online store for high-volume grocers, with a live catalog, automatic stock tracking and checkout built in. We can adapt it for a Zamboanga hardware store, pharmacy or retail shop. How many more orders could you take if shoppers could see your stock from their phone?",
+  },
+  {
+    id: 4,
+    group: "systems",
+    title: "QuickNote",
+    subtitle: "The Second Brain SaaS Master Template.",
+    type: "PRODUCTIVITY & SECOND BRAIN SAAS",
+    date: "2026",
+    image: "assets/images/project/quicknote.jpg",
+    url: "https://quicknote.ct.ws/?i=2",
+    desc: "Good ideas get lost in chat threads and half-finished docs. QuickNote saves every note as you type, sorts it with smart tags, and keeps images and files in cloud storage, with an interactive WebGL canvas for mapping ideas out. It's a second brain for creators and developers, and a ready base for your own SaaS. Have a product idea you'd rather not build from scratch?",
+  },
+  {
+    id: 5,
+    group: "static-websites",
+    title: "A.N.A",
+    subtitle: "The Interactive Digital Gallery Master Template.",
+    type: "DIGITAL ART & EXHIBITION GALLERY",
+    date: "2026",
+    image: "assets/images/project/ana.jpg",
+    url: "https://ana-seven-silk.vercel.app/",
+    desc: "Art deserves more than a grid of thumbnails. A.N.A is a Next.js gallery and exhibition app that puts work on a real-time WebGL canvas visitors can explore, next to curated artist manifestos. What if your next exhibition stayed open online long after opening night?",
+  },
+  {
+    id: 2,
+    group: "static-websites",
+    title: "Serene Smile Clinic",
+    subtitle: "The Fast-Loading Static Website Master Template.",
+    type: "CLINIC & SERVICE BOOKINGS",
+    date: "2026",
+    image: "assets/images/project/serene-smile.jpg",
+    url: "https://serene-smile.netlify.app/",
+    desc: "A clinic website shouldn't come with a maintenance bill. This static site has no database to look after and no monthly server headaches. Services, doctor profiles and contact details load instantly on any phone, and it's built to be adapted for local clinics, salons and gyms. When a new patient looks you up tonight, what will they find?",
   },
   {
     id: 8,
@@ -30691,7 +30696,7 @@ const _9 = () => [
       { src: "assets/images/project/court-booking-demo.webm", type: "video/webm" },
     ],
     url: "https://booking-demo.mihatechnologies.com/",
-    desc: "A working sandbox of our court booking system. Browse open hours, reserve a slot, upload a payment receipt, then sign in as the admin to review it. Runs in your own browser with sample data, so nothing is charged or sent.",
+    desc: "How many bookings slip away because nobody picked up the phone? In this live demo you can check open hours, reserve a slot and upload a payment receipt, then sign in as the admin to review it. It runs in your browser with sample data, so nothing is charged or sent. What if your courts could take bookings at 2 a.m. without you?",
   },
 ];
 function FreshCartPreview({ className = "w-full", title = "FreshCart walkthrough", href = "https://grocery-demo.mihatechnologies.com/" }) {
@@ -30735,7 +30740,7 @@ function PortfolioCard({ o }) {
     children: [
       m.jsxs("div", {
         children: [
-          m.jsx("h4", {
+          m.jsx("h3", {
             className: "text-xl text-white font-medium -leading-[0.2px]",
             children: m.jsx("a", {
               href: o.url || "/portfolio/" + o.id,
@@ -30808,7 +30813,7 @@ function V9() {
       m.jsxs("div", {
         className: "max-w-7xl mx-auto px-6",
         children: [
-          m.jsxs(Ye.h2, {
+          m.jsxs(Ye.h1, {
             initial: { opacity: 0, y: 20 },
             animate: { opacity: 1, y: 0 },
             transition: { duration: 0.5, delay: 0.2 },
@@ -30824,7 +30829,7 @@ function V9() {
             transition: { duration: 0.5, delay: 0.4 },
             className: "text-gray-600 text-lg max-w-3xl mb-12 leading-relaxed",
             children:
-              "From Zero-Error Ordering Hubs to 24/7 Automated Booking Systems: browse our battle-tested Master Templates, ready to be localized and deployed for your business in 7 days.",
+              "Each project below is a working Master Template. Pick one that fits your business, and we'll customize it around your brand and the way you work.",
           }),
           m.jsx("nav", {
             className: "portfolio-jump mb-12",
@@ -30902,7 +30907,7 @@ function V9() {
                   m.jsxs("div", {
                     className: "portfolio-group-head",
                     children: [
-                      m.jsxs("h3", {
+                      m.jsxs("h2", {
                         id: g.id + "-title",
                         className: "portfolio-group-title",
                         children: [
@@ -31462,7 +31467,7 @@ function k9() {
       m.jsx(Bn, {
         title: "Services - Modern Infrastructure & Hosting Architecture | MIHA Technologies",
         description:
-          "Explore our comprehensive services: Web app development, mobile app development, API solutions, and modern hosting infrastructure packages for your business.",
+          "Web app development, mobile app development, API solutions, and modern hosting infrastructure packages for your business.",
       }),
       m.jsx(p9, {}),
       m.jsx(Pi, {}),

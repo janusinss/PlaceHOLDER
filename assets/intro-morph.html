@@ -20432,14 +20432,14 @@ Error generating stack: ` +
                     style: { pointerEvents: heroTextOn ? "auto" : "none" },
                     className: "morph-hero-title",
                     children: [
-                      "We Build ",
-                      pt.jsx("br", {}),
                       pt.jsx("span", {
                         className: "italic",
-                        children: "Digital Products",
+                        children: "Digital Solutions",
                       }),
                       pt.jsx("br", {}),
-                      "That Drive Growth.",
+                      "That Drive",
+                      pt.jsx("br", {}),
+                      "Business Growth.",
                     ],
                   }),
                   pt.jsx(yl.p, {
@@ -20452,13 +20452,13 @@ Error generating stack: ` +
                     style: { pointerEvents: heroTextOn ? "auto" : "none" },
                     className: "morph-hero-sub",
                     children:
-                      "We’re Zamboanga City’s leading digital infrastructure agency. Our proven automated booking and zero-error ordering systems help local businesses cut costs and run 24/7.",
+                      "We’re a Zamboanga City-based agency that builds reliable systems to solve the problems slowing your business down, so you can spend your time growing it.",
                   }),
                   pt.jsx(yl.div, {
                     initial: { opacity: 0 },
                     animate:
                       i === "circle" && textU < 0.5
-                        ? { opacity: 0.7 - textU }
+                        ? { opacity: 1 - textU * 2 }
                         : { opacity: 0 },
                     transition: { duration: 0.5, delay: 0.2 },
                     className: "morph-hero-badge",
@@ -20486,9 +20486,9 @@ Error generating stack: ` +
                     className:
                       "morph-gallery-sub text-sm md:text-base max-w-lg leading-relaxed",
                     children: [
-                      "From Zero-Error Ordering Hubs to 24/7 Automated Booking Systems: ",
+                      "Each project is a working Master Template. ",
                       pt.jsx("br", { className: "hidden md:block" }),
-                      "browse our battle-tested Master Templates, ready to be localized and deployed for your business in 7 days.",
+                      "Pick one that fits your business, and we'll customize it around your brand and the way you work.",
                     ],
                   }),
                 ],

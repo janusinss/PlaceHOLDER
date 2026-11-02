@@ -19,7 +19,21 @@
     min-height: 100vh !important;
     border: none !important;
   }
+  /* Desktop shows the iframe intro (hidden from assistive tech).
+     Keep the real h1 + intro text available to screen readers. */
   .hero-mobile-static {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  .hero-mobile-static a {
     display: none !important;
   }
 }
@@ -341,7 +355,7 @@ section.pt-25 .grid img {
   border-radius: 9999px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: transparent;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
   font-family: inherit;
   font-size: 0.75rem;
   font-weight: 500;
@@ -2866,5 +2880,11 @@ body.legal-modal-open {
   .legal-modal-panel,
   .legal-modal-close {
     transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-infinite-scroll {
+    animation: none !important;
   }
 }
