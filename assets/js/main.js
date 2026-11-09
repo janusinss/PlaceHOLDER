@@ -21528,7 +21528,7 @@ function MS() {
                 className:
                   "mb-8 lg:mb-12 text-gray-700 text-lg leading-6 -tracking-[0.2px] max-w-xl mx-auto",
                 children:
-                  "We’re setting a new standard for tech in Zamboanga City, building reliable systems that look good, are easy to use, and solve the problems slowing your business down.",
+                  "We’re setting a new standard for tech in Zamboanga City, building reliable systems that are well designed, straightforward to use, and focused on fixing what slows your business down.",
               }),
               m.jsxs(Ye.div, {
                 initial: !1,
@@ -21839,7 +21839,7 @@ function pd() {
                       m.jsx("p", {
                         className: "text-gray-600 text-sm leading-relaxed",
                         children:
-                          "We start from systems we've already built and tested, so your booking or ordering setup goes live quickly and you stop losing sales sooner.",
+                          "Our systems are pre-built and tested, so your booking or ordering platform launches quickly and starts recovering lost sales sooner.",
                       }),
                     ],
                   }),
@@ -21863,7 +21863,7 @@ function pd() {
                       m.jsx("p", {
                         className: "text-gray-600 text-sm leading-relaxed",
                         children:
-                          "You work directly with our team in Zamboanga. When something comes up, you talk to the engineers who built your system.",
+                          "You work directly with our Zamboanga team. Every issue goes straight to the engineers who built your system.",
                       }),
                     ],
                   }),
@@ -21887,7 +21887,7 @@ function pd() {
                       m.jsx("p", {
                         className: "text-gray-600 text-sm leading-relaxed",
                         children:
-                          "Your system runs on cloud servers we monitor, so it holds up during your busiest hours.",
+                          "Your system runs on monitored cloud infrastructure, keeping it stable during peak hours.",
                       }),
                     ],
                   }),
