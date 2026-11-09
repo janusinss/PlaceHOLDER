@@ -20219,27 +20219,28 @@ Error generating stack: ` +
       );
       const ul = 20,
         Iy = 3e3,
+        // Ring cards: preview snippets of the portfolio projects
         t0 = [
-          "images/hero/freshcart.webp",
-          "images/hero/ph-mockup-ab.webp",
-          "images/hero/quicknote.webp",
-          "images/hero/ana.webp",
-          "images/hero/ph-code-desk.webp",
-          "images/hero/syrupynut.webp",
-          "images/hero/becoffee.webp",
-          "images/hero/ph-mockup-macbook.webp",
-          "images/hero/serene-smile.webp",
-          "images/hero/clients-cover.webp",
-          "images/hero/ph-code-dual.webp",
-          "images/hero/cover-about-office.webp",
-          "images/hero/cover-about.webp",
-          "images/hero/ph-code-monitor.webp",
-          "images/hero/service-hero.webp",
-          "images/hero/blog-cover.webp",
-          "images/hero/ph-mockup-ac.webp",
-          "images/hero/project-4.webp",
-          "images/hero/project-5.webp",
-          "images/hero/ph-chrome-wave.webp",
+          "images/hero/pv-becoffee-a.webp",
+          "images/hero/pv-ember-a.webp",
+          "images/hero/pv-freshcart-a.webp",
+          "images/hero/pv-quicknote-a.webp",
+          "images/hero/pv-ana-a.webp",
+          "images/hero/pv-serene-a.webp",
+          "images/hero/pv-court-a.webp",
+          "images/hero/pv-becoffee-b.webp",
+          "images/hero/pv-ember-b.webp",
+          "images/hero/pv-freshcart-b.webp",
+          "images/hero/pv-quicknote-b.webp",
+          "images/hero/pv-ana-b.webp",
+          "images/hero/pv-serene-b.webp",
+          "images/hero/pv-court-b.webp",
+          "images/hero/pv-becoffee-c.webp",
+          "images/hero/pv-ember-a.webp",
+          "images/hero/pv-court-a.webp",
+          "images/hero/pv-serene-b.webp",
+          "images/hero/pv-ana-a.webp",
+          "images/hero/pv-quicknote-b.webp",
         ],
         Ps = s((i, l, o) => i * (1 - o) + l * o, "lerp");
       function w2() {
@@ -20350,19 +20351,7 @@ Error generating stack: ` +
           v = Jr(m, { stiffness: 40, damping: 20 }),
           b = uu(0),
           E = Jr(b, { stiffness: 30, damping: 20 });
-        k.useEffect(() => {
-          const Q = f.current;
-          if (!Q) return;
-          const I = s((K) => {
-            const ut = Q.getBoundingClientRect(),
-              vt = ((K.clientX - ut.left) / ut.width) * 2 - 1;
-            b.set(vt * 100);
-          }, "handleMouseMove");
-          return (
-            Q.addEventListener("mousemove", I),
-            () => Q.removeEventListener("mousemove", I)
-          );
-        }, [b]);
+        // Gallery arc stays put; it no longer drifts toward the mouse cursor
         k.useEffect(() => {
           const Q = setTimeout(() => l("line"), 500),
             I = setTimeout(() => l("circle"), 2500);
@@ -20409,6 +20398,8 @@ Error generating stack: ` +
         const textU = Math.round(U * 20) / 20;
         // Hero text only catches the mouse (for text selection) while it is visible
         const heroTextOn = i === "circle" && textU < 0.5;
+        // Gallery heading/sub only catch the mouse once they've faded in
+        const galleryTextOn = U >= 0.9;
         const $ = rl(y, [0.8, 1], [0, 1]),
           q = rl(y, [0.8, 1], [20, 0]);
         return pt.jsx("div", {
@@ -20452,7 +20443,7 @@ Error generating stack: ` +
                     style: { pointerEvents: heroTextOn ? "auto" : "none" },
                     className: "morph-hero-sub",
                     children:
-                      "We’re a Zamboanga City-based agency that builds reliable systems to solve the problems slowing your business down, so you can spend your time growing it.",
+                      "We’re setting a new standard for tech in Zamboanga City, building reliable systems that look good, are easy to use, and solve the problems slowing your business down.",
                   }),
                   pt.jsx(yl.div, {
                     initial: { opacity: 0 },
@@ -20472,6 +20463,7 @@ Error generating stack: ` +
                   "absolute top-[10%] z-10 flex flex-col items-center justify-center text-center pointer-events-none px-4",
                 children: [
                   pt.jsxs("h2", {
+                    style: { pointerEvents: galleryTextOn ? "auto" : "none" },
                     className:
                       "morph-gallery-title text-3xl md:text-5xl font-normal tracking-tight mb-4",
                     children: [
@@ -20483,12 +20475,35 @@ Error generating stack: ` +
                     ],
                   }),
                   pt.jsxs("p", {
+                    style: { pointerEvents: galleryTextOn ? "auto" : "none" },
                     className:
                       "morph-gallery-sub text-sm md:text-base max-w-lg leading-relaxed",
                     children: [
                       "Each project is a working Master Template. ",
                       pt.jsx("br", { className: "hidden md:block" }),
                       "Pick one that fits your business, and we'll customize it around your brand and the way you work.",
+                    ],
+                  }),
+                  pt.jsxs("a", {
+                    href: "../portfolio.html",
+                    target: "_top",
+                    tabIndex: -1,
+                    style: { pointerEvents: galleryTextOn ? "auto" : "none" },
+                    className: "morph-gallery-cta",
+                    children: [
+                      pt.jsx("span", { children: "Come See Our Work" }),
+                      pt.jsx("svg", {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        width: 20,
+                        height: 20,
+                        viewBox: "0 0 24 24",
+                        fill: "none",
+                        "aria-hidden": "true",
+                        children: pt.jsx("path", {
+                          d: "M17.9941 5.25293C18.0771 5.253 18.1559 5.26997 18.2305 5.29492C18.2472 5.30045 18.2648 5.30381 18.2812 5.31055C18.3311 5.33127 18.3781 5.35722 18.4219 5.3877C18.4586 5.41309 18.4937 5.44192 18.5264 5.47461C18.6455 5.59379 18.7132 5.74352 18.7354 5.89844C18.7383 5.91968 18.7401 5.94112 18.7412 5.96289C18.7424 5.98346 18.7447 6.00382 18.7441 6.02441L18.7471 14.9941C18.747 15.4081 18.4103 15.744 17.9961 15.7441C17.5822 15.7438 17.2462 15.408 17.2461 14.9941L17.2441 7.81641L6.53027 18.5312C6.23737 18.824 5.76257 18.8241 5.46973 18.5312C5.1769 18.2384 5.17698 17.7636 5.46973 17.4707L16.1885 6.75098L8.99805 6.75C8.58403 6.74971 8.24816 6.41381 8.24805 6C8.24822 5.5859 8.58474 5.24985 8.99902 5.25L17.9941 5.25293Z",
+                          fill: "currentColor",
+                        }),
+                      }),
                     ],
                   }),
                 ],
@@ -21627,7 +21642,9 @@ Error generating stack: ` +
         max-width: 680px !important;
       }
       .morph-hero-title,
-      .morph-hero-sub {
+      .morph-hero-sub,
+      .morph-gallery-title,
+      .morph-gallery-sub {
         user-select: text !important;
         -webkit-user-select: text !important;
         cursor: text;
@@ -21678,6 +21695,42 @@ Error generating stack: ` +
         margin: 0 0 0.75rem 0 !important;
         text-align: center !important;
       }
+      .morph-gallery-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 1rem;
+        padding: 8px 16px;
+        border-radius: 9999px;
+        border: 1px solid #d1d5db;
+        background: transparent;
+        color: #374151 !important;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+      }
+      .morph-gallery-cta svg {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.3s ease;
+      }
+      .morph-gallery-cta:hover {
+        border-color: #111827;
+        color: #111827 !important;
+        background: rgba(17, 24, 39, 0.04);
+      }
+      .morph-gallery-cta:hover svg {
+        transform: translate(2px, -2px);
+      }
+      @media (prefers-color-scheme: dark) {
+        .morph-gallery-cta { border-color: #4b5563; color: #d1d5db !important; }
+        .morph-gallery-cta:hover { border-color: #fff; color: #fff !important; background: rgba(255, 255, 255, 0.06); }
+      }
+      .dark .morph-gallery-cta,
+      [data-theme="dark"] .morph-gallery-cta { border-color: #4b5563; color: #d1d5db !important; }
       .morph-gallery-title span.italic {
         font-style: italic !important;
         font-family:

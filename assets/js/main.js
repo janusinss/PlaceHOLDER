@@ -14715,7 +14715,7 @@ const Er = {
   ],
   services: [
     { label: "The Operations Check", href: "services.html" },
-    { label: "The 48-Hour Content Handover", href: "services.html" },
+    { label: "Content Handover", href: "services.html" },
     { label: "Fast System Launch", href: "services.html" },
     { label: "Launch and Ongoing Support", href: "services.html" },
   ],
@@ -21493,7 +21493,7 @@ function MS() {
       m.jsx("div", {
         className: "hero-desktop-intro",
         children: m.jsx("iframe", {
-          src: "assets/intro-morph.html?v=a11y16",
+          src: "assets/intro-morph.html?v=a11y23",
           className: "w-full h-full border-0 overflow-hidden block",
           title: "MIHA Technologies intro animation",
           "aria-hidden": "true",
@@ -21528,7 +21528,7 @@ function MS() {
                 className:
                   "mb-8 lg:mb-12 text-gray-700 text-lg leading-6 -tracking-[0.2px] max-w-xl mx-auto",
                 children:
-                  "We’re a Zamboanga City-based agency that builds reliable systems to solve the problems slowing your business down, so you can spend your time growing it.",
+                  "We’re setting a new standard for tech in Zamboanga City, building reliable systems that look good, are easy to use, and solve the problems slowing your business down.",
               }),
               m.jsxs(Ye.div, {
                 initial: !1,
@@ -21784,7 +21784,7 @@ function Jg({
 }
 function pd() {
   return m.jsx("section", {
-    className: "bg-black py-20",
+    className: "bg-white py-20",
     children: m.jsx("div", {
       className: "max-w-7xl mx-auto px-6",
       children: m.jsxs("div", {
@@ -21795,12 +21795,12 @@ function pd() {
             children: [
               m.jsx("p", {
                 className:
-                  "text-xs font-mono uppercase tracking-[0.25em] text-gray-400 mb-4",
+                  "text-xs font-mono uppercase tracking-[0.25em] text-gray-500 mb-4",
                 children: "Our Story & Origins",
               }),
               m.jsxs("h2", {
                 className:
-                  "text-white text-4xl sm:text-5xl font-normal leading-tight",
+                  "text-black text-4xl sm:text-5xl font-normal leading-tight",
                 children: [
                   "Started in Zamboanga, ",
                   m.jsx("br", {}),
@@ -21812,7 +21812,7 @@ function pd() {
               }),
               m.jsx("p", {
                 className:
-                  "text-white/60 text-base sm:text-lg mt-6 leading-relaxed",
+                  "text-gray-600 text-base sm:text-lg mt-6 leading-relaxed",
                 children:
                   "Modern Infrastructure & Hosting Architecture was founded by a specialized team of Zamboanga software engineers. Local businesses were losing revenue to manual order errors, missed phone calls, and high delivery app commissions. We build practical automated systems that stop those losses and modernize daily operations.",
               }),
@@ -21833,13 +21833,13 @@ function pd() {
                     children: [
                       m.jsx("h3", {
                         className:
-                          "text-white text-xl font-medium tracking-tight mb-2",
-                        children: "Rapid 7-Day Setup",
+                          "text-black text-xl font-medium tracking-tight mb-2",
+                        children: "Quick Setup",
                       }),
                       m.jsx("p", {
-                        className: "text-white/60 text-sm leading-relaxed",
+                        className: "text-gray-600 text-sm leading-relaxed",
                         children:
-                          "We do not waste your time with months of development. We deploy your automated booking and ordering systems in days so you can recover lost sales immediately.",
+                          "We start from systems we've already built and tested, so your booking or ordering setup goes live quickly and you stop losing sales sooner.",
                       }),
                     ],
                   }),
@@ -21857,13 +21857,13 @@ function pd() {
                     children: [
                       m.jsx("h3", {
                         className:
-                          "text-white text-xl font-medium tracking-tight mb-2",
+                          "text-black text-xl font-medium tracking-tight mb-2",
                         children: "Direct Local Support",
                       }),
                       m.jsx("p", {
-                        className: "text-white/60 text-sm leading-relaxed",
+                        className: "text-gray-600 text-sm leading-relaxed",
                         children:
-                          "You partner directly with our Zamboanga-based team. You get no outsourced call centers and no middle managers, just direct contact with the engineers who built your system.",
+                          "You work directly with our team in Zamboanga. When something comes up, you talk to the engineers who built your system.",
                       }),
                     ],
                   }),
@@ -21881,13 +21881,13 @@ function pd() {
                     children: [
                       m.jsx("h3", {
                         className:
-                          "text-white text-xl font-medium tracking-tight mb-2",
-                        children: "Zero-Downtime Reliability",
+                          "text-black text-xl font-medium tracking-tight mb-2",
+                        children: "Reliable Hosting",
                       }),
                       m.jsx("p", {
-                        className: "text-white/60 text-sm leading-relaxed",
+                        className: "text-gray-600 text-sm leading-relaxed",
                         children:
-                          "Built on enterprise cloud servers. Your system will not crash, even during your busiest sales hours.",
+                          "Your system runs on cloud servers we monitor, so it holds up during your busiest hours.",
                       }),
                     ],
                   }),
@@ -21905,7 +21905,7 @@ const NS = [
     id: 1,
     title: "The Operations Check",
     description:
-      "We review your business in person to find where you lose revenue, including missed bookings, staff ordering mistakes, or manual stock tracking, and provide the exact system to fix it.",
+      "We visit your business to find where you're losing sales, like missed bookings, ordering mistakes, or stock tracked by hand, and recommend a system to fix it.",
     icon: m.jsxs("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: "48",
@@ -21931,9 +21931,9 @@ const NS = [
   },
   {
     id: 2,
-    title: "The 48-Hour Handover",
+    title: "Content Handover",
     description:
-      "Work begins once your 50% deposit clears. You send us your branding, menus, and price lists within 48 hours so our team can add them straight into your system.",
+      "Work starts once your deposit clears. You send us your branding, menus, and price lists, and we add them to your system.",
     icon: m.jsxs("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: "48",
@@ -21957,7 +21957,7 @@ const NS = [
     id: 3,
     title: "Fast System Launch",
     description:
-      "We skip months of custom development. Using our tested templates, our Zamboanga team sets up, tests, and prepares your digital system in days.",
+      "We build from templates we've already tested, so our team can set up your system without starting from scratch.",
     icon: m.jsxs("svg", {
       xmlns: "http://www.w3.org/2000/svg",
       width: "48",
@@ -27319,7 +27319,7 @@ const nexServices = [
     tag: "01 • DIGITAL BOOKING & QR ORDERING",
     header: "Digital Booking & QR Ordering",
     description:
-      "Eliminate long lines, missed phone calls, and staff mistakes. We build 24/7 automated booking hubs and contactless QR menus with a Staff Accountability Lock. This digital checklist requires employees to confirm order details before sending tickets to preparation. You take orders automatically, bypass 20% to 30% delivery app fees, and protect your ratings.",
+      "Cut down on long lines, missed calls, and order mistakes. We build online booking pages and QR menus with a Staff Accountability Lock, a checklist that makes employees confirm each order before it goes to the kitchen. Orders come in on their own, and you keep the commission delivery apps would take.",
     image:
       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1200&sat=-100",
     icon: "M3 3h6v6H3zm2 2v2h2V5zm8-2h6v6h-6zm2 2v2h2V5zM3 13h6v6H3zm2 2v2h2v-2zm13-2h3v3h-3zm-5 0h3v3h-3zm2 5h3v3h-3zm3 0h3v3h-3z",
@@ -27327,10 +27327,10 @@ const nexServices = [
   {
     id: "bookings",
     label: "Automated Bookings",
-    tag: "02 • 24/7 APPOINTMENTS",
+    tag: "02 • APPOINTMENTS",
     header: "Automated Bookings",
     description:
-      "Set up an appointment portal that runs around the clock. Customers book their own time slots and pay deposits online. The system syncs with staff schedules automatically to eliminate double-bookings and open schedule gaps.",
+      "Customers book their own time slots and pay deposits online. Bookings sync with staff schedules, so you avoid double-bookings and empty slots.",
     image:
       "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=1200&sat=-100",
     icon: "M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 16H5V9h14v11z",
@@ -27348,18 +27348,18 @@ const nexServices = [
   },
   {
     id: "bots",
-    label: "24/7 SMS & Messenger Bots",
+    label: "SMS & Messenger Bots",
     tag: "04 • CLIENT RETENTION & BOTS",
     header: "Automated Client Follow-Ups",
     description:
-      "Never lose revenue to a no-show again. We connect automated SMS reminders for appointments, expired memberships, and 24/7 chat bots that answer common questions and collect payments on the spot.",
+      "Fewer no-shows and fewer unanswered messages. We set up SMS reminders for appointments and expiring memberships, plus chat bots that answer common questions and take payments.",
     image:
       "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?q=80&w=1200&sat=-100",
     icon: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
   },
   {
     id: "payments",
-    label: "Instant Payment Automation",
+    label: "Payment Automation",
     tag: "05 • PAYMENT WORKFLOWS",
     header: "Direct POS & Payment Automation",
     description:
@@ -27591,31 +27591,31 @@ const d9 = [
       id: 1,
       question: "What exactly do you build?",
       answer:
-        "We deploy battle-tested digital infrastructure for local businesses. This includes QR Ordering Hubs for cafes, 24/7 Automated Booking Systems for clinics and gyms, and digital inventory dashboards for retail stores.",
+        "We build systems for local businesses: QR ordering for cafes, online booking for clinics and gyms, and inventory dashboards for retail stores.",
     },
     {
       id: 2,
       question: "How fast can you launch my system?",
       answer:
-        "Because we use pre-built Master Templates, we do not waste months on custom coding. Once you pay your deposit and provide your branding/menus, we localize your system and push it live in 7 days or less.",
+        "Fast, because we start from our Master Templates instead of coding everything from scratch. Once your deposit clears and you send your branding and menus, we set the system up for your business and put it live.",
     },
     {
       id: 3,
       question: "What happens if my system crashes?",
       answer:
-        "It doesn't. Your mandatory SLA retainer covers strict Managed Security and priority cloud hosting. We monitor your system 24/7 to ensure your digital operations never go offline, even during your highest traffic hours.",
+        "Every system comes with a support plan that covers managed security, cloud hosting, and monitoring. If something goes wrong, we're the ones who fix it.",
     },
     {
       id: 4,
       question: "Do my staff need to be good with technology?",
       answer:
-        "No. We specifically engineer our systems to be foolproof for minimum-wage staff. Tools like our 'Staff Accountability Lock' actually force your employees to make fewer mistakes without requiring any complex tech training.",
+        "No. We design our systems so any staff member can use them. Tools like the Staff Accountability Lock make employees confirm each step, which cuts down on mistakes without any tech training.",
     },
     {
       id: 5,
       question: "Who owns the data and the system?",
       answer:
-        "You own 100% of your business data, customer lists, and transaction history. MIHA Technologies retains ownership of the underlying proprietary codebase to securely manage updates, host the servers, and protect your system from cyber threats.",
+        "You own all of your business data, customer lists, and transaction history. MIHA Technologies retains ownership of the underlying proprietary codebase to securely manage updates, host the servers, and protect your system from cyber threats.",
     },
     {
       id: 6,
@@ -27727,21 +27727,21 @@ const d9 = [
       number: "#1",
       title: "The Operations Check",
       description:
-        "We review your business in person to find where you lose revenue, including missed bookings, staff ordering mistakes, or manual stock tracking, and prescribe the exact digital system to fix it.",
+        "We visit your business to find where you're losing sales, like missed bookings, ordering mistakes, or stock tracked by hand, and recommend a system to fix it.",
     },
     {
       id: 2,
       number: "#2",
-      title: "The 48-Hour Content Handover",
+      title: "Content Handover",
       description:
-        "Work begins once your 50% deposit clears. You send us your branding, menus, and price lists within 48 hours so our team can add them straight into your system.",
+        "Work starts once your deposit clears. You send us your branding, menus, and price lists, and we add them to your system.",
     },
     {
       id: 3,
       number: "#3",
       title: "Fast System Launch",
       description:
-        "We bypass months of custom development. Using our tested Master Templates, our Zamboanga team sets up, tests, and prepares your digital system in days.",
+        "We build from our tested Master Templates, so our team can set up your system without starting from scratch.",
     },
     {
       id: 4,
@@ -27860,7 +27860,7 @@ function AboutPrinciples() {
                 className:
                   "text-white/60 text-base sm:text-lg mt-6 leading-relaxed",
                 children:
-                  "We founded Modern Infrastructure & Hosting Architecture in university computer labs with a clear realization. Modern companies don't need agency overhead or sluggish junior handoffs. They need hungry, detail-obsessed engineers who ship production-grade digital software on tight milestone sprints.",
+                  "We started Modern Infrastructure & Hosting Architecture in university computer labs. Most businesses we talked to didn't need a big agency with layers of handoffs. They needed engineers who care about the details and ship working software on clear milestones.",
               }),
               m.jsxs("div", {
                 className:
@@ -27869,7 +27869,7 @@ function AboutPrinciples() {
                   m.jsx("span", {
                     className: "w-2 h-2 rounded-full bg-emerald-400 animate-pulse",
                   }),
-                  "7 Core Specialists • 100% In-House Code • Zero Outsourcing",
+                  "Small Team • Code Written In-House • Nothing Outsourced",
                 ],
               }),
             ],
@@ -27913,15 +27913,15 @@ function ServicesCapabilities() {
       num: "01",
       tag: "QR ORDERING",
       title: "Digital Booking & QR Ordering",
-      desc: "Eliminate long lines, missed phone calls, and staff mistakes with 24/7 automated booking hubs and contactless QR menus featuring our Staff Accountability Lock. Bypass 20% to 30% delivery app fees and protect your ratings.",
-      chips: ["Accountability Lock", "Zero App Fees", "Contactless QR"],
+      desc: "Cut down on long lines, missed calls, and order mistakes with online booking and QR menus that include our Staff Accountability Lock. You also keep the commission delivery apps would take.",
+      chips: ["Accountability Lock", "No App Commissions", "Contactless QR"],
     },
     {
       num: "02",
       tag: "AUTOMATED BOOKING",
       title: "Automated Bookings & Deposit Portals",
-      desc: "Set up an appointment portal that runs around the clock. Customers book their own time slots and pay deposits online, syncing with staff schedules automatically to eliminate double-bookings and open schedule gaps.",
-      chips: ["24/7 Booking Hub", "Upfront Deposits", "Zero Schedule Gaps"],
+      desc: "Customers book their own time slots and pay deposits online. Bookings sync with staff schedules, so you avoid double-bookings and empty slots.",
+      chips: ["Online Booking", "Upfront Deposits", "Synced Schedules"],
     },
     {
       num: "03",
@@ -27934,22 +27934,22 @@ function ServicesCapabilities() {
       num: "04",
       tag: "CLIENT RETENTION",
       title: "Automated Client Follow-Ups & Bots",
-      desc: "Never lose revenue to a no-show again. We connect automated SMS reminders for appointments, expired memberships, and 24/7 chat bots that answer common questions and collect payments on the spot.",
+      desc: "Fewer no-shows and fewer unanswered messages. We set up SMS reminders for appointments and expiring memberships, plus chat bots that answer common questions and take payments.",
       chips: ["No-Show Reduction", "SMS Reminders", "Messenger Bots"],
     },
     {
       num: "05",
       tag: "PAYMENT WORKFLOWS",
       title: "Direct POS & Payment Automation",
-      desc: "Stop chasing manual bank transfers and fake payment screenshots. We connect your systems directly to automated GCash, Maya, and card checkouts with instant verification and automatic digital receipts.",
-      chips: ["GCash & Maya", "Card Checkout", "Instant Webhooks"],
+      desc: "Stop chasing bank transfers and checking payment screenshots. We connect your system to GCash, Maya, and card checkout, which verify payments and send digital receipts automatically.",
+      chips: ["GCash & Maya", "Card Checkout", "Auto Receipts"],
     },
     {
       num: "06",
       tag: "ONGOING RETAINER",
       title: "Ongoing Infrastructure & Security Support",
       desc: "We do not leave after launch. We maintain your secure cloud hosting, back up your database, and provide direct technical help so your business stays online.",
-      chips: ["Cloud Hosting", "Daily Backups", "Direct Tech Help"],
+      chips: ["Cloud Hosting", "Automatic Backups", "Direct Tech Help"],
     },
     {
       num: "07",
@@ -28084,7 +28084,7 @@ function ServicesProcess() {
     {
       step: "04",
       title: "Cloud Launch & Handover",
-      desc: "Security auditing, zero-downtime production deployment, 100% full source code and IP transfer, plus documented handover.",
+      desc: "Security checks, a careful production launch, full transfer of source code and IP, and written handover docs.",
     },
   ];
 
@@ -28185,23 +28185,25 @@ function ProjectPreview({ sources, poster, title, className = "w-full", motion =
   if (appleDevice) {
     const source = sources.find((item) => item.type === "video/mp4");
     const stem = source.src.replace(/\.mp4$/, "-loop");
-    return m.jsxs("picture", {
-      className: "block",
-      children: [
-        m.jsx("source", { srcSet: stem + ".webp", type: "image/webp" }),
-        m.jsx(motion ? Ye.img : "img", {
-          ...animation,
-          src: stem + ".gif",
-          alt: title,
-          className,
-          width: width || 640,
-          height: height || 360,
-          loading: "lazy",
-          decoding: "async",
-          "data-project-animation": "",
-          onError,
-        }),
-      ],
+    // project-previews.js swaps the poster for the animation only while this preview is the one playing.
+    return m.jsx(motion ? Ye.img : "img", {
+      ...animation,
+      src: poster,
+      alt: title,
+      className,
+      width: width || 640,
+      height: height || 360,
+      loading: "lazy",
+      decoding: "async",
+      "data-project-animation": "",
+      "data-poster": poster,
+      "data-anim-src": stem + ".webp",
+      "data-anim-fallback": stem + ".gif",
+      onError: (event) => {
+        const img = event.currentTarget;
+        if (img.getAttribute("data-anim-fallback") || img.getAttribute("src") !== img.getAttribute("data-anim-src")) return;
+        if (onError) onError(event);
+      },
     });
   }
   return m.jsxs(motion ? Ye.video : "video", {
@@ -28214,7 +28216,6 @@ function ProjectPreview({ sources, poster, title, className = "w-full", motion =
     "data-project-preview": "",
     "data-freshcart-preview": freshCart ? "" : void 0,
     "webkit-playsinline": "",
-    autoPlay: !0,
     muted: !0,
     loop: !0,
     playsInline: !0,
@@ -28521,7 +28522,6 @@ function b9() {
           "MIHA Technologies (Modern Infrastructure & Hosting Architecture). Engineering scalable web applications, modern cloud infrastructure, and APIs for startups.",
       }),
       m.jsx(MS, {}),
-      m.jsx(Re, { width: "100%", children: m.jsx(md, {}) }),
       m.jsx(Re, { width: "100%", children: m.jsx(pd, {}) }),
       m.jsx(Re, { width: "100%", children: m.jsx(DS, {}) }),
       m.jsx(Rv, {}),
@@ -29178,7 +29178,7 @@ function L9({
         price: "Custom Quote",
         billingTerms: "One-Time Setup + Monthly Support",
         features: [
-          "Launch in 7 Days",
+          "Fast Launch",
           "Custom Design & Branding",
           "Fast Cloud Hosting",
           "Website Visitor Stats",
@@ -29197,7 +29197,7 @@ function L9({
           "Booking System or QR Menu Hub",
           "Real-Time Admin Dashboard",
           "Staff Daily Checklists",
-          "24/7 Uptime Monitoring",
+          "Uptime Monitoring",
         ],
         buttonText: "Request Local Audit",
         isPopular: true,
@@ -29211,7 +29211,7 @@ function L9({
           "Everything in Tier 2",
           "Automated SMS & Chatbots",
           "Live Inventory & Online Payments",
-          "1-Hour Priority Support",
+          "Priority Support",
           "Automated Backups & Security",
         ],
         buttonText: "Request Local Audit",
@@ -29370,7 +29370,7 @@ function L9({
               timeSlot +
               ". We received your project scope and will send your Google Meet invite to " +
               t.email +
-              " within 24 hours.",
+              ".",
           );
           if (typeof window !== "undefined") {
             const el = document.getElementById("contact");
@@ -29436,7 +29436,7 @@ function L9({
               t.name +
               "! Your project inquiry has been received. Our leadership team will review your requirements and follow up at " +
               t.email +
-              " within 24 hours.",
+              ".",
           );
           if (typeof window !== "undefined") {
             const el = document.getElementById("contact");
@@ -29823,7 +29823,7 @@ function L9({
                                     m.jsx("div", {
                                       className: "miha-confirm-step-desc",
                                       children: isCallBooking
-                                        ? "Google Meet link sent to your inbox within 24 hours."
+                                        ? "We'll email you a Google Meet link."
                                         : "Direct review and evaluation by engineering leadership.",
                                     }),
                                   ],
@@ -30361,7 +30361,7 @@ function L9({
                             className:
                               "text-neutral-400 text-sm sm:text-base leading-relaxed mb-8",
                             children:
-                              "Pick a date that works best for you. During this 15-30 minute intro, we'll review your project details and explore technical solutions.",
+                              "Pick a date that works for you. On this short intro call, we'll go over your project and talk through how we'd build it.",
                           }),
                           m.jsxs("div", {
                             className: "flex items-center justify-between mb-6",
@@ -30626,7 +30626,7 @@ const _9 = () => [
       { src: "assets/images/project/becoffee-demo.webm", type: "video/webm" },
     ],
     url: "https://ordering-demo.mihatechnologies.com/",
-    desc: "Wrong orders cost you twice, once in wasted food and again in a bad review. Guests scan a QR code and their order goes straight to the kitchen, and our Staff Accountability Lock makes staff confirm each ticket before it's sent. Why keep paying delivery apps 30% of orders you could take yourself?",
+    desc: "Wrong orders cost you twice, once in wasted food and again in a bad review. Guests scan a QR code and their order goes straight to the kitchen, and our Staff Accountability Lock makes staff confirm each ticket before it's sent. Take those orders yourself instead of handing a cut to the delivery apps.",
   },
   {
     id: 9,
@@ -30648,7 +30648,7 @@ const _9 = () => [
     date: "2026",
     image: "assets/images/project/freshcart-demo-poster.jpg",
     url: "https://grocery-demo.mihatechnologies.com/",
-    desc: "Customers shouldn't have to call to ask what's in stock. FreshCart started as an online store for high-volume grocers, with a live catalog, automatic stock tracking and checkout built in. We can adapt it for a Zamboanga hardware store, pharmacy or retail shop. How many more orders could you take if shoppers could see your stock from their phone?",
+    desc: "Customers shouldn't have to call to ask what's in stock. FreshCart started as an online store for high-volume grocers, with a live catalog, automatic stock tracking and checkout built in. We can adapt it for a Zamboanga hardware store, pharmacy or retail shop. Your shoppers could check stock from their phone instead of calling the shop.",
   },
   {
     id: 4,
@@ -30670,7 +30670,7 @@ const _9 = () => [
     date: "2026",
     image: "assets/images/project/ana.jpg",
     url: "https://ana-seven-silk.vercel.app/",
-    desc: "Art deserves more than a grid of thumbnails. A.N.A is a Next.js gallery and exhibition app that puts work on a real-time WebGL canvas visitors can explore, next to curated artist manifestos. What if your next exhibition stayed open online long after opening night?",
+    desc: "Art deserves more than a grid of thumbnails. A.N.A is a Next.js gallery and exhibition app that puts work on a real-time WebGL canvas visitors can explore, next to curated artist manifestos. Your next exhibition can stay open online long after opening night.",
   },
   {
     id: 2,
@@ -30681,7 +30681,7 @@ const _9 = () => [
     date: "2026",
     image: "assets/images/project/serene-smile.jpg",
     url: "https://serene-smile.netlify.app/",
-    desc: "A clinic website shouldn't come with a maintenance bill. This static site has no database to look after and no monthly server headaches. Services, doctor profiles and contact details load instantly on any phone, and it's built to be adapted for local clinics, salons and gyms. When a new patient looks you up tonight, what will they find?",
+    desc: "A clinic website shouldn't come with a maintenance bill. This static site has no database to look after and no monthly server headaches. Services, doctor profiles and contact details load fast on any phone, and it's built to be adapted for local clinics, salons and gyms. When a new patient looks you up tonight, what will they find?",
   },
   {
     id: 8,
@@ -30696,7 +30696,7 @@ const _9 = () => [
       { src: "assets/images/project/court-booking-demo.webm", type: "video/webm" },
     ],
     url: "https://booking-demo.mihatechnologies.com/",
-    desc: "How many bookings slip away because nobody picked up the phone? In this live demo you can check open hours, reserve a slot and upload a payment receipt, then sign in as the admin to review it. It runs in your browser with sample data, so nothing is charged or sent. What if your courts could take bookings at 2 a.m. without you?",
+    desc: "How many bookings slip away because nobody picked up the phone? In this live demo you can check open hours, reserve a slot and upload a payment receipt, then sign in as the admin to review it. It runs in your browser with sample data, so nothing is charged or sent. Your courts can keep taking bookings after you've gone home.",
   },
 ];
 function FreshCartPreview({ className = "w-full", title = "FreshCart walkthrough", href = "https://grocery-demo.mihatechnologies.com/" }) {

@@ -1,4 +1,6 @@
-/* Shared lifecycle for silent, inline project previews, including Safari. */
+/* Shared lifecycle for silent, inline project previews, including Safari.
+   Only one preview plays at a time: the one under the pointer, otherwise the
+   one closest to the middle of the viewport. The rest hold their frame. */
 (function () {
   'use strict';
 
@@ -6,7 +8,13 @@
   window.__mihaProjectPreviewsInitialized = true;
 
   var selector = 'video[data-project-preview]';
+  var stillSelector = 'img[data-project-animation]';
   var previews = new Map();
+  var stills = new Map();
+  var featured = null;
+  var hovered = null;
+  var featureFrame = 0;
+  var reduceMotion = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   var intersectionObserver;
   var refreshFrame = 0;
   var nearEndSeconds = 0.75;
@@ -21,7 +29,109 @@
 
   function eligible(state) {
     return !state.disposed && document.visibilityState === 'visible' &&
-      state.visible && inViewport(state.video);
+      state.visible && state.video === featured && inViewport(state.video);
+  }
+
+  function mostlyVisible(el) {
+    if (!inViewport(el)) return false;
+    var rect = el.getBoundingClientRect();
+    var shown = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+    return shown >= Math.min(rect.height, window.innerHeight) * 0.5;
+  }
+
+  function chooseFeatured() {
+    if (document.visibilityState !== 'visible') return null;
+    if (hovered && hovered.isConnected && inViewport(hovered)) return hovered;
+    if (reduceMotion && reduceMotion.matches) return null;
+    var middle = window.innerHeight / 2;
+    var best = null;
+    var bestDistance = Infinity;
+    var bestLeft = Infinity;
+    var currentDistance = Infinity;
+    function consider(el) {
+      if (!mostlyVisible(el)) return;
+      var rect = el.getBoundingClientRect();
+      var distance = Math.abs(rect.top + rect.height / 2 - middle);
+      if (el === featured) currentDistance = distance;
+      if (distance < bestDistance - 1 || (Math.abs(distance - bestDistance) <= 1 && rect.left < bestLeft)) {
+        best = el;
+        bestDistance = distance;
+        bestLeft = rect.left;
+      }
+    }
+    previews.forEach(function (state) { consider(state.video); });
+    stills.forEach(function (_, img) { consider(img); });
+    // Keep the current preview unless another is clearly more centred, so playback doesn't flicker.
+    if (featured && currentDistance !== Infinity && currentDistance - bestDistance < 48) return featured;
+    return best;
+  }
+
+  function updateStill(img) {
+    var target = img === featured ? img.getAttribute('data-anim-src') : img.getAttribute('data-poster');
+    if (target && img.getAttribute('src') !== target) img.setAttribute('src', target);
+  }
+
+  function registerStill(img) {
+    if (stills.has(img)) return;
+    if (!img.hasAttribute('data-poster')) img.setAttribute('data-poster', img.getAttribute('src'));
+    var onError = function () {
+      var fallback = img.getAttribute('data-anim-fallback');
+      if (fallback && img.getAttribute('src') === img.getAttribute('data-anim-src')) {
+        img.setAttribute('data-anim-src', fallback);
+        img.removeAttribute('data-anim-fallback');
+        updateStill(img);
+      }
+    };
+    img.addEventListener('error', onError);
+    stills.set(img, onError);
+    scheduleFeature();
+  }
+
+  // The fade sits on the preview's wrapper so it never fights the hover zoom on the media itself.
+  function markFrame(el) {
+    var frame = el.parentElement;
+    if (!frame) return;
+    var state = el === featured ? 'live' : 'paused';
+    if (frame.getAttribute('data-preview-frame') !== state) frame.setAttribute('data-preview-frame', state);
+  }
+
+  function markFrames() {
+    previews.forEach(function (state) { markFrame(state.video); });
+    stills.forEach(function (_, img) { markFrame(img); });
+  }
+
+  function injectFadeStyles() {
+    if (document.getElementById('miha-preview-fade')) return;
+    var style = document.createElement('style');
+    style.id = 'miha-preview-fade';
+    style.textContent =
+      '@media (prefers-reduced-motion: no-preference) {' +
+      '[data-preview-frame] { transition: opacity 600ms cubic-bezier(0.22, 1, 0.36, 1), filter 600ms cubic-bezier(0.22, 1, 0.36, 1); }' +
+      '[data-preview-frame="paused"] { opacity: 0.55; filter: grayscale(1); }' +
+      '}';
+    document.head.appendChild(style);
+  }
+
+  function updateFeatured() {
+    featureFrame = 0;
+    var next = chooseFeatured();
+    var changed = next !== featured;
+    featured = next;
+    stills.forEach(function (_, img) { updateStill(img); });
+    markFrames();
+    if (changed) previews.forEach(updateVisibility);
+  }
+
+  function scheduleFeature() {
+    if (featureFrame) return;
+    featureFrame = window.requestAnimationFrame(updateFeatured);
+  }
+
+  function previewIn(target) {
+    if (!target || !target.closest) return null;
+    if (target.matches(selector) || target.matches(stillSelector)) return target;
+    var card = target.closest('article, li, a');
+    return card ? card.querySelector(selector + ', ' + stillSelector) : null;
   }
 
   function clearTimers(state) {
@@ -37,12 +147,12 @@
     video.defaultMuted = true;
     video.muted = true;
     video.playsInline = true;
-    video.autoplay = true;
+    video.autoplay = false;
     video.loop = true;
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
-    video.setAttribute('autoplay', '');
+    video.removeAttribute('autoplay');
     video.setAttribute('loop', '');
   }
 
@@ -254,6 +364,7 @@
 
     if (intersectionObserver) intersectionObserver.observe(video);
     updateVisibility(state);
+    scheduleFeature();
   }
 
   function remove(state) {
@@ -265,15 +376,23 @@
     });
     pause(state);
     previews.delete(state.video);
+    if (featured === state.video) featured = null;
+    if (hovered === state.video) hovered = null;
+    scheduleFeature();
   }
 
   function discover(root) {
     if (!root || root.nodeType !== 1) return;
     if (root.matches(selector)) register(root);
     root.querySelectorAll(selector).forEach(register);
+    if (root.matches(stillSelector)) registerStill(root);
+    root.querySelectorAll(stillSelector).forEach(registerStill);
   }
 
   function refreshAll() {
+    featured = chooseFeatured();
+    stills.forEach(function (_, img) { updateStill(img); });
+    markFrames();
     previews.forEach(updateVisibility);
   }
 
@@ -292,29 +411,55 @@
   }
 
   function boot() {
+    injectFadeStyles();
     if (typeof IntersectionObserver !== 'undefined') {
       intersectionObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           var state = previews.get(entry.target);
           if (state) updateVisibility(state);
         });
-      }, { threshold: [0, 0.01] });
-    } else {
-      var scheduleRefresh = function () {
-        if (refreshFrame) return;
-        refreshFrame = window.requestAnimationFrame(function () {
-          refreshFrame = 0;
-          refreshAll();
-        });
-      };
-      window.addEventListener('scroll', scheduleRefresh, { passive: true });
-      window.addEventListener('resize', scheduleRefresh, { passive: true });
+        scheduleFeature();
+      }, { threshold: [0, 0.01, 0.5, 1] });
     }
+    var scheduleRefresh = function () {
+      if (refreshFrame) return;
+      refreshFrame = window.requestAnimationFrame(function () {
+        refreshFrame = 0;
+        if (intersectionObserver) updateFeatured();
+        else refreshAll();
+      });
+    };
+    window.addEventListener('scroll', scheduleRefresh, { passive: true });
+    window.addEventListener('resize', scheduleRefresh, { passive: true });
+    if (reduceMotion && reduceMotion.addEventListener) reduceMotion.addEventListener('change', scheduleFeature);
+
+    document.addEventListener('pointerover', function (event) {
+      if (event.pointerType !== 'mouse') return;
+      var preview = previewIn(event.target);
+      if (preview && preview !== hovered) {
+        hovered = preview;
+        scheduleFeature();
+      }
+    }, { passive: true });
+    document.addEventListener('pointerout', function (event) {
+      if (event.pointerType !== 'mouse' || !hovered) return;
+      if (previewIn(event.relatedTarget) === hovered) return;
+      hovered = null;
+      scheduleFeature();
+    }, { passive: true });
 
     discover(document.documentElement);
     new MutationObserver(function (records) {
       records.forEach(function (record) { record.addedNodes.forEach(discover); });
       previews.forEach(function (state) { if (!state.video.isConnected) remove(state); });
+      stills.forEach(function (onError, img) {
+        if (img.isConnected) return;
+        img.removeEventListener('error', onError);
+        stills.delete(img);
+        if (featured === img) featured = null;
+        if (hovered === img) hovered = null;
+      });
+      scheduleFeature();
     }).observe(document.documentElement, { childList: true, subtree: true });
 
     document.addEventListener('visibilitychange', refreshAll);
