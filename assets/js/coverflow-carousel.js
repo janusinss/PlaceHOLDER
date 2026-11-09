@@ -86,7 +86,7 @@
 
       if (nameEl) nameEl.textContent = member.name;
       if (roleEl) roleEl.textContent = member.role;
-      if (socialsEl && member.socialHtml) {
+      if (socialsEl) {
         socialsEl.innerHTML = member.socialHtml;
       }
     }
@@ -144,6 +144,9 @@
         const opacity = Math.max(0, 1 - config.fade * dist) * loopFade;
         card.style.opacity = String(opacity);
         card.style.zIndex = String(100 - Math.round(dist));
+
+        const socials = card.querySelector('[data-cf-socials]');
+        if (socials) socials.inert = Math.round(dist) !== 0;
 
         if (Math.round(dist) === 0) {
           card.classList.add('is-active-card');

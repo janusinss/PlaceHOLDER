@@ -2007,6 +2007,39 @@ html body header.site-header.site-header.site-header.nav-menu-open {
   border-radius: inherit;
 }
 
+
+/* Profile links on the selected team card. */
+.cf-socials {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.85);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.cf-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: #000;
+  border-radius: 50%;
+}
+
+.cf-socials a:hover { color: #555; }
+.cf-socials a:focus-visible { outline: 2px solid #000; outline-offset: -3px; }
+.cf-socials svg { width: 20px; height: 20px; }
+.cf-socials[inert] { visibility: hidden; }
+
 .cf-controls {
   position: absolute;
   top: 50%;
